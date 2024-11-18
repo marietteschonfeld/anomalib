@@ -8,7 +8,7 @@ from src.anomalib import TaskType
 from src.anomalib.data import Folder
 from src.anomalib.data.utils import read_image
 from src.anomalib.engine import Engine
-from src.anomalib.models import Patchcore, Padim
+from src.anomalib.models import LWinNN
 import torch
 from anomalib.data import MVTec
 
@@ -22,7 +22,7 @@ datamodule.setup()
 
 # datamodule = MVTec(num_workers=0)
 # model = Patchcore(backbone="resnet18")
-model = Patchcore(backbone="resnet18")
+model = LWinNN(backbone="resnet18")
 
 # # start training
 engine = Engine(task=TaskType.SEGMENTATION)
