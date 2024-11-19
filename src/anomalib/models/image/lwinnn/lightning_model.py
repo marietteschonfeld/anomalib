@@ -57,8 +57,11 @@ class LWinNN(MemoryBankMixin, AnomalyModule):
 
     def validation_step(self, batch: dict[str, str | torch.Tensor], *args, **kwargs) -> STEP_OUTPUT:
         del args, kwargs  # These variables are not used.
+        output = self.model(batch["image"])
 
-        batch["anomaly_maps"] = self.model(batch["image"])
+        # Add anomaly maps and predicted scores to the batch.
+        batch["anomaly_maps"] = output["anomaly_map"]
+        batch["pred_scores"] = output["pred_score"]
         return batch
 
     @property

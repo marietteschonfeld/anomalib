@@ -71,7 +71,8 @@ class LWinNNModel(nn.Module):
         if self.pooling:
             self.pooler = torch.nn.AvgPool2d(3, 1, 1)
 
-        self.idx: torch.Tensor
+        self.register_buffer("memory_bank", torch.Tensor())
+
         self.loss = None
         self.anomaly_map_generator = AnomalyMapGenerator()
 
@@ -110,8 +111,7 @@ class LWinNNModel(nn.Module):
             layer_embedding = F.interpolate(layer_embedding, size=embeddings.shape[-2:], mode="bilinear")
             embeddings = torch.cat((embeddings, layer_embedding), 1)
 
-        idx = self.idx.to(embeddings.device)
-        return torch.index_select(embeddings, 1, idx)
+        return embeddings
     
     def generate_memory_bank(self, embeddings):
         self.memory_bank = embeddings.permute(0,2,3,1)
@@ -127,7 +127,7 @@ class LWinNNModel(nn.Module):
         batch_size, embedding_size, H, W = embedding.shape
         floored_window = floor(self.window_size/2)
 
-        patch_scores = torch.zeros((batch_size,1,H,W))
+        patch_scores = torch.zeros((batch_size,1,H,W), device=embedding.device)
         for h in range(H):
             for w in range(W):
                 window = self.memory_bank[:,max(0,h-floored_window):min(H,h+floored_window+1), 
@@ -139,5 +139,5 @@ class LWinNNModel(nn.Module):
     
     @staticmethod
     def compute_anomaly_scores(patch_scores: torch.Tensor) -> torch.Tensor:
-        return torch.amax(patch_scores, dim=(0,2,3))
+        return torch.amax(patch_scores, dim=(1,2,3))
         
