@@ -1,8 +1,1 @@
 dataset,category,model,image_AUROC,pixel_AUPRO
-mvtec_ad,bottle,lwinnn,1.0,0.9290539622306824
-mvtec_ad,bottle,padim,0.75,0.8327552676200867
-mvtec_ad,bottle,padim,0.8499999642372131,0.8271024227142334
-mvtec_ad,bottle,padim,0.7249999642372131,0.8253024220466614
-mvtec_ad,bottle,lwinnn,1.0,0.9290539622306824
-mvtec_ad,cable,padim,0.5344827175140381,0.829704761505127
-mvtec_ad,cable,lwinnn,0.9875374436378479,0.9292171001434326

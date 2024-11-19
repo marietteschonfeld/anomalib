@@ -4,7 +4,7 @@ visa_categories=('candle' 'capsules' 'cashew' 'chewinggum' 'fryum' 'macaroni1' '
 
 models=('padim' 'lwinnn' 'patchcore')
 
-gpu_type='mps'
+gpu_type='cuda'
 gpu_number='0'
 write_scores='experiment_4.csv'
 
