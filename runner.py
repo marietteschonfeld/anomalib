@@ -1,7 +1,7 @@
 from typing import Any
 from src.anomalib import TaskType
 from src.anomalib.engine import Engine
-from src.anomalib.models import LWinNN, Padim, Patchcore
+from src.anomalib.models import LWinNN, Padim, Patchcore, SPADE
 from src.anomalib.data import MVTec, Visa
 import csv
 import argparse
@@ -16,7 +16,7 @@ CATEGORIES = ['bottle','cable','capsule','carpet','grid','hazelnut','leather','m
               'candle', 'capsules', 'cashew', 'chewinggum', 'fryum', 'macaroni1', 'macaroni2', 'pcb1', 'pcb2', 'pcb3', 'pcb4', 'pipe_fryum',
               'breakfast_box','juice_bottle','pushpins','screw_bag','splicing_connectors']
 BACKBONES = ['resnet18','wide_resnet50','wide_resnet101','resnet34','resnet50']
-MODELS = ['padim', 'lwinnn', 'patchcore']
+MODELS = ['padim', 'lwinnn', 'patchcore', 'spade']
 image_sizes = {"mvtec_ad": {'bottle':(1024, 1024),
                                 'cable':(1024, 1024),
                                 'capsule':(1024, 1024),
@@ -82,27 +82,30 @@ def main():
     H = ceil((256/max(image_size))*min(image_size))
     transform = transforms.Compose([
             transforms.Resize(size=H, max_size=max(H+1, 256), antialias=True),
+            transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
             ])
 
-    models = {"padim": Padim(backbone="resnet18"),
-              "lwinnn": LWinNN(backbone="resnet18", window_size=7),
-              "patchcore": Patchcore(backbone="resnet18")}
+    models = {"padim": Padim(backbone="resnet18", layers=["layer1", "layer2", "layer3"]),
+              "lwinnn": LWinNN(backbone="resnet18", window_size=7, layers=["layer1", "layer2", "layer3"]),
+              "patchcore": Patchcore(backbone="resnet18", layers=["layer1", "layer2", "layer3"]),
+              "spade": SPADE(backbone="resnet18", layers=["layer1", "layer2", "layer3"])}
+    
+    batch_sizes = {"padim": 128, "lwinnn": 128, "patchcore": 16, "spade": 32}
     
     models[args.model]._transform = transform
-
+    num_workers = 7
     if args.dataset == "mvtec_ad":
-        datamodule = MVTec(root=roots[args.dataset], num_workers=0,category=args.category, train_batch_size=400, eval_batch_size=256)
+        datamodule = MVTec(root=roots[args.dataset], num_workers=num_workers,category=args.category, train_batch_size=batch_sizes[args.model], eval_batch_size=batch_sizes[args.model])
     elif args.dataset == "visa":
-        datamodule = Visa(root=roots[args.dataset], num_workers=0,category=args.category, train_batch_size=400, eval_batch_size=256)
+        datamodule = Visa(root=roots[args.dataset], num_workers=num_workers,category=args.category, train_batch_size=batch_sizes[args.model], eval_batch_size=batch_sizes[args.model])
     datamodule.prepare_data()  # Downloads the dataset if it's not in the specified `root` directory
     datamodule.setup()
 
     model = models[args.model]
 
 
-
     # start training
-    engine = Engine(task=TaskType.SEGMENTATION, image_metrics=["AUROC"], pixel_metrics=["AUPRO"], normalization=NormalizationMethod.NONE)
+    engine = Engine(task=TaskType.SEGMENTATION, image_metrics=["AUROC"], pixel_metrics=["AUPRO"])#, normalization=NormalizationMethod.NONE)
     engine.fit(model=model, datamodule=datamodule)
 
     # load best model from checkpoint before evaluating
