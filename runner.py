@@ -90,7 +90,7 @@ def main():
               "patchcore": Patchcore(backbone="resnet18", layers=["layer1", "layer2", "layer3"]),
               "spade": SPADE(backbone="resnet18", layers=["layer1", "layer2", "layer3"])}
     
-    batch_sizes = {"padim": 32, "lwinnn": 32, "patchcore": 16, "spade": 32}
+    batch_sizes = {"padim": 32, "lwinnn": 32, "patchcore": 2, "spade": 32}
     
     models[args.model]._transform = transform
     num_workers = 7
