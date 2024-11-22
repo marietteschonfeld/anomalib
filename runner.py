@@ -97,7 +97,7 @@ def main():
               "spalwinnn": SPALWinNN(backbone="resnet18", layers=["layer1", "layer2", "layer3"], K_im=args.K, interpolation_mode=args.interpolation_mode,
                                      anomaly_map_detection=args.anomaly_map_detection, window_size=args.window_size, pooling=args.pooling)}
     
-    batch_sizes = {"padim": 8, "lwinnn": 8, "patchcore": 8, "spade": 8}
+    batch_sizes = {"padim": 8, "lwinnn": 8, "patchcore": 8, "spade": 8, "spalwinnn" : 8}
     
     models[args.model]._transform = transform
     num_workers = 7
@@ -125,7 +125,7 @@ def main():
     pixel_AUPRO = test_results[0]['pixel_AUPRO']
 
     if args.write_scores != "":
-        if model == "spalwinnn":
+        if args.model == "spalwinnn":
             row = [args.dataset,args.category,args.model,args.interpolation_mode, args.pooling, args.K, args.window_size, args.anomaly_map_detection, image_AUROC,pixel_AUPRO]
         else:
             row = [args.dataset,args.category,args.model,image_AUROC,pixel_AUPRO]
