@@ -2,11 +2,10 @@
 mvtec_ad_categories=('bottle' 'cable' 'capsule' 'carpet' 'grid' 'hazelnut' 'leather' 'metal_nut' 'pill' 'screw' 'tile' 'toothbrush' 'transistor' 'wood' 'zipper')
 visa_categories=('candle' 'capsules' 'cashew' 'chewinggum' 'fryum' 'macaroni1' 'macaroni2' 'pcb1' 'pcb2' 'pcb3' 'pcb4' 'pipe_fryum')
 
-# models=('padim' 'lwinnn' 'patchcore')
-models=('spade' 'patchcore')
+models=('spade' 'padim' 'lwinnn' 'patchcore')
 
-gpu_type='mps'
-gpu_number='0'
+gpu_type='cuda'
+gpu_number='0,1'
 write_scores='experiment_4.csv'
 for model in "${models[@]}"; do
     for category in "${mvtec_ad_categories[@]}"; do
