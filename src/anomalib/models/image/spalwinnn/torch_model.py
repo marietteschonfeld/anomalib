@@ -46,14 +46,17 @@ if TYPE_CHECKING:
 #     return n_features_original, n_patches
 
 
-class SPADEModel(nn.Module):
+class SPALWinNNModel(nn.Module):
     def __init__(
         self,
         backbone: str = "resnet18",
         layers: list[str] = ["layer1", "layer2", "layer3"],  # noqa: B006
         pre_trained: bool = True,
+        interpolation_mode: str = "nearest",
         K_im: int = 50,
-        K_pix: int = 1,
+        anomaly_map_detection: bool = False,
+        window_size: int = 5,
+        pooling: bool = True,
     ) -> None:
         super().__init__()
         self.tiler: Tiler | None = None
@@ -66,8 +69,13 @@ class SPADEModel(nn.Module):
             pre_trained=pre_trained,
         ).eval()
 
+        self.interpolation_mode = interpolation_mode
         self.K_im = K_im
-        self.K_pix = K_pix
+        self.anomaly_map_detection = anomaly_map_detection
+        self.window_size = window_size
+        self.pooling = pooling
+        if self.pooling:
+            self.pooler = torch.nn.AvgPool2d(3, 1, 1)
 
         self.register_buffer("memory_bank", torch.Tensor())
 
@@ -82,6 +90,8 @@ class SPADEModel(nn.Module):
 
         with torch.no_grad():
             features = self.feature_extractor(input_tensor)
+            if self.pooling:
+                features = {layer: self.pooler(feature) for layer, feature in features.items()}
             embeddings = self.generate_embedding(features)
 
         if self.tiler:
@@ -90,11 +100,16 @@ class SPADEModel(nn.Module):
         if self.training:
             output = embeddings
         else:
-            pred_scores, top_K_images = self.compute_anomaly_scores(embeddings)
+            top_K_images = None
+            if self.K_im > 0:
+                anomaly_scores, top_K_images = self.top_K(embeddings)
             patch_scores = self.compute_patch_scores(embeddings, top_K_images)
 
+            if self.anomaly_map_detection or self.K_im<0:
+                anomaly_scores = self.compute_anomaly_scores(patch_scores)
+
             anomaly_map = self.anomaly_map_generator(patch_scores, output_size)
-            output = {"pred_score": pred_scores, 
+            output = {"pred_score": anomaly_scores, 
                         "anomaly_map": anomaly_map}
 
         return output
@@ -103,14 +118,13 @@ class SPADEModel(nn.Module):
         embeddings = features[self.layers[0]]
         for layer in self.layers[1:]:
             layer_embedding = features[layer]
-            layer_embedding = F.interpolate(layer_embedding, size=embeddings.shape[-2:], mode="nearest")
+            layer_embedding = F.interpolate(layer_embedding, size=embeddings.shape[-2:], mode=self.interpolation_mode)
             embeddings = torch.cat((embeddings, layer_embedding), 1)
 
         return embeddings
     
     def generate_memory_bank(self, embeddings):
-        N,C,H,W = embeddings.shape
-        self.memory_bank = embeddings.permute(0,2,3,1).reshape(N, H*W, C)
+        self.memory_bank = embeddings.permute(0,2,3,1)
 
     
     @staticmethod
@@ -119,22 +133,35 @@ class SPADEModel(nn.Module):
         patch_scores, _ = distances.min(dim=-1)
         return patch_scores
 
-    def compute_patch_scores(self, embedding: torch.Tensor, top_K_images: torch.Tensor) -> torch.Tensor:
+    def compute_patch_scores(self, embedding: torch.Tensor, top_K_images:torch.Tensor = None) -> torch.Tensor:
         batch_size, embedding_size, H, W = embedding.shape
-        embedding = embedding.permute(0,2,3,1).reshape(batch_size, H*W, embedding_size)
-        dists = []
-        for i in range(batch_size):
-            temp_embedding = embedding[i].unsqueeze(1)
-            temp_bank = self.memory_bank[top_K_images[i]].transpose(0,1)
-            dist = self.nearest_neighbors(temp_embedding, temp_bank).reshape(1,H,W)
-            dists.append(dist)
-        patch_scores = torch.stack(dists)
-        # def nn(batch_embedding, batch_index):
-        #     return torch.cdist(batch_embedding, self.memory_bank[batch_index].transpose(0,1)).min(dim=-1)[0].reshape(1,H,W)
-        # patch_scores = torch.vmap(nn)(embedding, top_K_images)
+        floored_window = floor(self.window_size/2)
+        patch_scores = torch.zeros((batch_size,1,H,W), device=embedding.device)
+        if top_K_images == None:
+            for h in range(H):
+                for w in range(W):
+                    window = self.memory_bank[:,max(0,h-floored_window):min(H,h+floored_window+1), 
+                                                max(0,w-floored_window):min(W,w+floored_window+1),:]
+                    window = window.reshape(-1,embedding_size)
+
+                    patch_scores[:,0,h,w] = self.nearest_neighbors(embedding[:,:,h,w], window)
+        else:
+            for n in range(batch_size):
+                for h in range(H):
+                    for w in range(W):
+                        window = self.memory_bank[top_K_images[n],max(0,h-floored_window):min(H,h+floored_window+1), 
+                                                    max(0,w-floored_window):min(W,w+floored_window+1),:]
+                        window = window.reshape(-1,embedding_size)
+
+                        patch_scores[n,0,h,w] = self.nearest_neighbors(embedding[n,:,h,w], window)
+
         return patch_scores
     
-    def compute_anomaly_scores(self, embedding: torch.Tensor) -> torch.Tensor:
+    @staticmethod
+    def compute_anomaly_scores(patch_scores: torch.Tensor) -> torch.Tensor:
+        return torch.amax(patch_scores, dim=(1,2,3))
+    
+    def top_K(self, embedding: torch.Tensor) -> torch.Tensor:
         batch_size, train_size = embedding.shape[0], self.memory_bank.shape[0]
         embedding = embedding.permute(0,2,3,1)
         distances = torch.cdist(embedding.reshape(batch_size,-1), self.memory_bank.reshape(train_size, -1), compute_mode='use_mm_for_euclid_dist')

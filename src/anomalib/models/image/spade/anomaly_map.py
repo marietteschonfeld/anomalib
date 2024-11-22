@@ -19,7 +19,7 @@ class AnomalyMapGenerator(nn.Module):
             anomaly_map = patch_scores
         else:
             anomaly_map = F.interpolate(patch_scores, size=(image_size[0], image_size[1]), mode="bilinear", align_corners=False)
-        return anomaly_map
+        return self.blur(anomaly_map)
 
     def forward(
         self,

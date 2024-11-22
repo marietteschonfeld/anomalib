@@ -1,7 +1,7 @@
 from typing import Any
 from src.anomalib import TaskType
 from src.anomalib.engine import Engine
-from src.anomalib.models import LWinNN, Padim, Patchcore, SPADE
+from src.anomalib.models import LWinNN, Padim, Patchcore, SPADE, SPALWinNN
 from src.anomalib.data import MVTec, Visa
 import csv
 import argparse
@@ -16,7 +16,7 @@ CATEGORIES = ['bottle','cable','capsule','carpet','grid','hazelnut','leather','m
               'candle', 'capsules', 'cashew', 'chewinggum', 'fryum', 'macaroni1', 'macaroni2', 'pcb1', 'pcb2', 'pcb3', 'pcb4', 'pipe_fryum',
               'breakfast_box','juice_bottle','pushpins','screw_bag','splicing_connectors']
 BACKBONES = ['resnet18','wide_resnet50','wide_resnet101','resnet34','resnet50']
-MODELS = ['padim', 'lwinnn', 'patchcore', 'spade']
+MODELS = ['padim', 'lwinnn', 'patchcore', 'spade', 'spalwinnn']
 image_sizes = {"mvtec_ad": {'bottle':(1024, 1024),
                                 'cable':(1024, 1024),
                                 'capsule':(1024, 1024),
@@ -65,6 +65,11 @@ def parse_arguments():
     parser.add_argument("--gpu_number", default=0)
     parser.add_argument("--write_scores", type=str, default="")
 
+    parser.add_argument("--interpolation_mode", type=str, default="bilinear")
+    parser.add_argument("--K", type=int, default=-1)
+    parser.add_argument("--anomaly_map_detection", default=False, type=lambda x: (str(x).lower() == 'true'))
+    parser.add_argument('--pooling', help="pool features", default=False, type=lambda x: (str(x).lower() == 'true'))
+
     args = parser.parse_args()
 
     if args.gpu_type != "mps":
@@ -86,11 +91,13 @@ def main():
             ])
 
     models = {"padim": Padim(backbone="resnet18", layers=["layer1", "layer2", "layer3"]),
-              "lwinnn": LWinNN(backbone="resnet18", window_size=7, layers=["layer1", "layer2", "layer3"]),
+              "lwinnn": LWinNN(backbone="resnet18", window_size=args.window_size, layers=["layer1", "layer2", "layer3"]),
               "patchcore": Patchcore(backbone="resnet18", layers=["layer1", "layer2", "layer3"]),
-              "spade": SPADE(backbone="resnet18", layers=["layer1", "layer2", "layer3"])}
+              "spade": SPADE(backbone="resnet18", layers=["layer1", "layer2", "layer3"]), 
+              "spalwinnn": SPALWinNN(backbone="resnet18", layers=["layer1", "layer2", "layer3"], K_im=args.K, interpolation_mode=args.interpolation_mode,
+                                     anomaly_map_detection=args.anomaly_map_detection, window_size=args.window_size, pooling=args.pooling)}
     
-    batch_sizes = {"padim": 32, "lwinnn": 32, "patchcore": 2, "spade": 32}
+    batch_sizes = {"padim": 8, "lwinnn": 8, "patchcore": 8, "spade": 8}
     
     models[args.model]._transform = transform
     num_workers = 7
@@ -118,7 +125,10 @@ def main():
     pixel_AUPRO = test_results[0]['pixel_AUPRO']
 
     if args.write_scores != "":
-        row = [args.dataset,args.category,args.model,image_AUROC,pixel_AUPRO]
+        if model == "spalwinnn":
+            row = [args.dataset,args.category,args.model,args.interpolation_mode, args.pooling, args.K, args.window_size, args.anomaly_map_detection, image_AUROC,pixel_AUPRO]
+        else:
+            row = [args.dataset,args.category,args.model,image_AUROC,pixel_AUPRO]
         with open('{}'.format(args.write_scores),'a') as fd:
             writer = csv.writer(fd)
             writer.writerow(row)

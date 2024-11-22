@@ -20,6 +20,7 @@ from .patchcore import Patchcore
 from .reverse_distillation import ReverseDistillation
 from .rkde import Rkde
 from .spade import SPADE
+from .spalwinnn import SPALWinNN
 from .stfpm import Stfpm
 from .uflow import Uflow
 from .vlm_ad import VlmAd
@@ -43,6 +44,7 @@ __all__ = [
     "ReverseDistillation",
     "Rkde",
     "SPADE",
+    "SPALWinNN",
     "Stfpm",
     "Uflow",
     "VlmAd",
