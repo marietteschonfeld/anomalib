@@ -146,14 +146,19 @@ class SPALWinNNModel(nn.Module):
 
                     patch_scores[:,0,h,w] = self.nearest_neighbors(embedding[:,:,h,w], window)
         else:
-            for n in range(batch_size):
-                for h in range(H):
-                    for w in range(W):
-                        window = self.memory_bank[top_K_images[n],max(0,h-floored_window):min(H,h+floored_window+1), 
-                                                    max(0,w-floored_window):min(W,w+floored_window+1),:]
-                        window = window.reshape(-1,embedding_size)
-
-                        patch_scores[n,0,h,w] = self.nearest_neighbors(embedding[n,:,h,w], window)
+            for h in range(H):
+                for w in range(W):
+                    window = self.memory_bank[top_K_images,max(0,h-floored_window):min(H,h+floored_window+1), 
+                                                max(0,w-floored_window):min(W,w+floored_window+1),:]
+                    window = window.reshape(batch_size,-1,embedding_size)
+                    patch_scores[:,0,h,w] = self.nearest_neighbors(embedding[:,:,h,w].unsqueeze(1), window).min(dim=-1)[0]
+            # for n in range(batch_size):
+            #     for h in range(H):
+            #         for w in range(W):
+            #             window = self.memory_bank[top_K_images[n],max(0,h-floored_window):min(H,h+floored_window+1), 
+            #                                         max(0,w-floored_window):min(W,w+floored_window+1),:]
+            #             window = window.reshape(-1,embedding_size)
+            #             patch_scores[n,0,h,w] = self.nearest_neighbors(embedding[n,:,h,w].unsqueeze(0), window)
 
         return patch_scores
     

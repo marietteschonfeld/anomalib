@@ -6,12 +6,12 @@ model='spalwinnn'
 
 interpolation_modes=('nearest' 'bilinear')
 poolings=('False' 'True')
-Ks=(-1 50)
+Ks=(50)
 window_sizes=(1 5)
 detections=('False' 'True')
 
 gpu_type='cuda'
-gpu_number='2'
+gpu_number='0'
 write_scores='experiment_1.csv'
 for interpolation_mode in "${interpolation_modes[@]}"; do
     for pooling in "${poolings[@]}"; do
@@ -22,9 +22,9 @@ for interpolation_mode in "${interpolation_modes[@]}"; do
                         python runner.py --model "$model" --dataset mvtec_ad --category "$category" --gpu_type "$gpu_type" --gpu_number "$gpu_number" --write_scores "$write_scores" --interpolation_mode "$interpolation_mode" --pooling "$pooling" --K "$K" --window_size "$window_size" --anomaly_map_detection "$detection"
                     done
 
-                    for category in "${visa_categories[@]}"; do
-                        python runner.py --model "$model" --dataset visa --category "$category" --gpu_type "$gpu_type" --gpu_number "$gpu_number" --write_scores "$write_scores" --interpolation_mode "$interpolation_mode" --pooling "$pooling" --K "$K" --window_size "$window_size" --anomaly_map_detection "$detection"
-                    done
+                    # for category in "${visa_categories[@]}"; do
+                    #     python runner.py --model "$model" --dataset visa --category "$category" --gpu_type "$gpu_type" --gpu_number "$gpu_number" --write_scores "$write_scores" --interpolation_mode "$interpolation_mode" --pooling "$pooling" --K "$K" --window_size "$window_size" --anomaly_map_detection "$detection"
+                    # done
                 done
             done
         done
