@@ -106,9 +106,9 @@ def main():
               "spalwinnn": SPALWinNN(backbone="resnet18", layers=["layer1", "layer2", "layer3"], K_im=args.K, interpolation_mode=args.interpolation_mode,
                                      anomaly_map_detection=args.anomaly_map_detection, window_size=args.window_size, pooling=args.pooling)}
     
-    batch_sizes = {"padim": 32, "lwinnn": 32, "patchcore": 32, "spade": 32, "spalwinnn" : 32}
+    batch_sizes = {"padim": 8, "lwinnn": 8, "patchcore": 8, "spade": 8, "spalwinnn" : 8}
     
-    num_workers = 30
+    num_workers = {'mps': 5, 'cuda':15}[args.gpu_type]
     if args.dataset == "mvtec_ad":
         datamodule = MVTec(root=roots[args.dataset], num_workers=num_workers,category=args.category, train_batch_size=batch_sizes[args.model], eval_batch_size=batch_sizes[args.model])
     elif args.dataset == "visa":
