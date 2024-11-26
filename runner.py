@@ -142,8 +142,8 @@ def main():
         datamodule=datamodule
     )
 
-    image_AUROC = test_results['image_AUROC']
-    pixel_AUPRO = test_results['pixel_AUPRO']
+    image_AUROC = test_results[0]['image_AUROC']
+    pixel_AUPRO = test_results[0]['pixel_AUPRO']
 
     if args.write_scores != "":
         if args.model == "spalwinnn":
