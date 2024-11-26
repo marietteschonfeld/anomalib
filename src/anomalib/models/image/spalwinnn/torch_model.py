@@ -125,7 +125,7 @@ class SPALWinNNModel(nn.Module):
         return embeddings
     
     def generate_memory_bank(self, embeddings):
-        self.memory_bank = embeddings.permute(0,2,3,1)
+        self.memory_bank = embeddings.permute(0,2,3,1)[0:max(500, embeddings.shape[0])]
 
     
     @staticmethod
@@ -170,7 +170,10 @@ class SPALWinNNModel(nn.Module):
     def top_K(self, embedding: torch.Tensor) -> torch.Tensor:
         batch_size, train_size = embedding.shape[0], self.memory_bank.shape[0]
         embedding = embedding.permute(0,2,3,1)
-        distances = torch.cdist(embedding.reshape(batch_size,-1), self.memory_bank.reshape(train_size, -1), compute_mode='use_mm_for_euclid_dist')
+        distances = torch.zeros((batch_size, train_size), device=embedding.device)
+        for i in range(train_size):
+            distances[:, i] = torch.cdist(embedding.reshape(batch_size,-1), self.memory_bank[i].flatten().unsqueeze(0),compute_mode='use_mm_for_euclid_dist').squeeze()
+        # distances = torch.cdist(embedding.reshape(batch_size,-1), self.memory_bank.reshape(train_size, -1), compute_mode='use_mm_for_euclid_dist')
         pred_scores, top_K_images = torch.topk(distances, k=self.K_im, dim=1, largest=False)
         return pred_scores.mean(dim=1), top_K_images
     
