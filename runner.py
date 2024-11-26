@@ -108,7 +108,7 @@ def main():
     
     batch_sizes = {"padim": 32, "lwinnn": 32, "patchcore": 32, "spade": 32, "spalwinnn" : 32}
     
-    num_workers = 1
+    num_workers = 30
     if args.dataset == "mvtec_ad":
         datamodule = MVTec(root=roots[args.dataset], num_workers=num_workers,category=args.category, train_batch_size=batch_sizes[args.model], eval_batch_size=batch_sizes[args.model])
     elif args.dataset == "visa":
