@@ -125,7 +125,7 @@ class SPALWinNNModel(nn.Module):
         return embeddings
     
     def generate_memory_bank(self, embeddings):
-        self.memory_bank = embeddings.permute(0,2,3,1)[0:max(350, embeddings.shape[0])]
+        self.memory_bank = embeddings.permute(0,2,3,1)
 
     
     @staticmethod

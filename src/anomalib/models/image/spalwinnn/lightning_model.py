@@ -42,6 +42,7 @@ class SPALWinNN(MemoryBankMixin, AnomalyModule):
 
         self.stats: list[torch.Tensor] = []
         self.embeddings: list[torch.Tensor] = []
+        self.samples=0
 
     @staticmethod
     def configure_optimizers() -> None:
@@ -49,9 +50,10 @@ class SPALWinNN(MemoryBankMixin, AnomalyModule):
 
     def training_step(self, batch: dict[str, str | torch.Tensor], *args, **kwargs) -> None:
         del args, kwargs 
-
-        batch_embedding = self.model(batch["image"])
-        self.embeddings.append(batch_embedding)
+        if self.samples <= 350:
+            batch_embedding = self.model(batch["image"])
+            self.embeddings.append(batch_embedding)
+            self.samples += batch_embedding.shape[0]
 
     def fit(self) -> None:
         logger.info("Aggregating the embedding extracted from the training set.")
