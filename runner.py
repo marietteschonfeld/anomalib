@@ -124,26 +124,26 @@ def main():
     # config_file = yaml.safe_load(Path("configs/model/{}.yaml".format(args.model)).read_text())
     # # config_file['model']['init_args']['pooling']=False
     # # print("configg", config_file)
-    config_file = {'metrics': {'pixel': 'AUPRO', 'image': 'AUROC'}}
+    # config_file = {'metrics': {'pixel': 'AUPRO', 'image': 'AUROC'}}
 
-    print(config_file)
+    # print(config_file)
 
-    test_results = BenchmarkJob(args.gpu_type, model=model, datamodule=datamodule, seed=42, flat_cfg=config_file)
-    res = test_results.run()
+    # test_results = BenchmarkJob(args.gpu_type, model=model, datamodule=datamodule, seed=42, flat_cfg=config_file)
+    # res = test_results.run()
 
 
-    # # start training
-    # engine = Engine(task=TaskType.SEGMENTATION, image_metrics=["AUROC"], pixel_metrics=["AUPRO"])#, normalization=NormalizationMethod.NONE)
-    # engine.fit(model=model, datamodule=datamodule)
+    # start training
+    engine = Engine(task=TaskType.SEGMENTATION, image_metrics=["AUROC"], pixel_metrics=["AUPRO"])#, normalization=NormalizationMethod.NONE)
+    engine.fit(model=model, datamodule=datamodule)
 
-    # # load best model from checkpoint before evaluating
-    # test_results = engine.test(
-    #     model=model,
-    #     datamodule=datamodule
-    # )
+    # load best model from checkpoint before evaluating
+    test_results = engine.test(
+        model=model,
+        datamodule=datamodule
+    )
 
-    image_AUROC = res['image_AUROC']
-    pixel_AUPRO = res['pixel_AUPRO']
+    image_AUROC = test_results['image_AUROC']
+    pixel_AUPRO = test_results['pixel_AUPRO']
 
     if args.write_scores != "":
         if args.model == "spalwinnn":
