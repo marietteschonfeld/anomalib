@@ -108,7 +108,7 @@ def main():
     
     batch_sizes = {"padim": 8, "lwinnn": 8, "patchcore": 8, "spade": 8, "spalwinnn" : 8}
     
-    num_workers = {'mps': 5, 'cuda':15}[args.gpu_type]
+    num_workers = {'mps': 7, 'cuda':127}[args.gpu_type]
     if args.dataset == "mvtec_ad":
         datamodule = MVTec(root=roots[args.dataset], num_workers=num_workers,category=args.category, train_batch_size=batch_sizes[args.model], eval_batch_size=batch_sizes[args.model])
     elif args.dataset == "visa":
@@ -133,7 +133,7 @@ def main():
 
 
     # start training
-    engine = Engine(task=TaskType.SEGMENTATION, image_metrics=["AUROC"], pixel_metrics=["AUPRO"])#, normalization=NormalizationMethod.NONE)
+    engine = Engine(accelerator=args.gpu_type,task=TaskType.SEGMENTATION, image_metrics=["AUROC"], pixel_metrics=["AUPRO"])#, normalization=NormalizationMethod.NONE)
     engine.fit(model=model, datamodule=datamodule)
 
     # load best model from checkpoint before evaluating
