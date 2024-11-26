@@ -69,6 +69,8 @@ class BenchmarkJob(Job):
                 accelerator=self.accelerator,
                 devices=devices,
                 default_root_dir=temp_dir,
+                pixel_metrics=self.flat_cfg['metrics']['pixel'],
+                image_metrics=self.flat_cfg['metrics']['image']
             )
             fit_start_time = time.time()
             engine.fit(self.model, self.datamodule)

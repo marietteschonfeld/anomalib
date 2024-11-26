@@ -1,0 +1,14 @@
+model:
+  class_path: anomalib.models.LWinNN
+  init_args:
+    layers:
+      - layer1
+      - layer2
+      - layer3
+    backbone: resnet18
+    pre_trained: true
+    window_size: 5
+    pooling: true
+
+metrics:
+  pixel: AUROC

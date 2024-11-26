@@ -1,6 +1,7 @@
 from typing import Any
 from src.anomalib import TaskType
 from src.anomalib.engine import Engine
+from  src.anomalib.pipelines.benchmark.job import BenchmarkJob
 from src.anomalib.models import LWinNN, Padim, Patchcore, SPADE, SPALWinNN
 from src.anomalib.data import MVTec, Visa
 import csv
@@ -10,6 +11,9 @@ from anomalib.utils.normalization import NormalizationMethod
 from math import ceil
 import torchvision.transforms.v2 as transforms
 import torch
+import yaml
+from pathlib import Path
+import shutil
 
 DATASETS = ['mvtec_ad', 'visa', 'mvtec_loco']
 CATEGORIES = ['bottle','cable','capsule','carpet','grid','hazelnut','leather','metal_nut','pill','screw','tile','toothbrush','transistor','wood','zipper',
@@ -80,6 +84,11 @@ def parse_arguments():
 
 def main():
     args = parse_arguments()
+    try:
+        shutil.rmtree('results')
+    except OSError as e:
+        print("Error: %s - %s." % (e.filename, e.strerror))
+
     roots = {"mvtec_ad":"../AdversariApple/Data/mvtec_anomaly_detection/",
              "visa": "../AdversariApple/Data/VisA_20220922"}
     print("Running dataset {} {} with model {}".format(args.dataset, args.category, args.model))
@@ -111,19 +120,30 @@ def main():
     model._transform = transform
 
 
+    
+    # config_file = yaml.safe_load(Path("configs/model/{}.yaml".format(args.model)).read_text())
+    # # config_file['model']['init_args']['pooling']=False
+    # # print("configg", config_file)
+    config_file = {'metrics': {'pixel': 'AUPRO', 'image': 'AUROC'}}
 
-    # start training
-    engine = Engine(task=TaskType.SEGMENTATION, image_metrics=["AUROC"], pixel_metrics=["AUPRO"])#, normalization=NormalizationMethod.NONE)
-    engine.fit(model=model, datamodule=datamodule)
+    print(config_file)
 
-    # load best model from checkpoint before evaluating
-    test_results = engine.test(
-        model=model,
-        datamodule=datamodule
-    )
+    test_results = BenchmarkJob('mps', model=model, datamodule=datamodule, seed=42, flat_cfg=config_file)
+    res = test_results.run()
 
-    image_AUROC = test_results[0]['image_AUROC']
-    pixel_AUPRO = test_results[0]['pixel_AUPRO']
+
+    # # start training
+    # engine = Engine(task=TaskType.SEGMENTATION, image_metrics=["AUROC"], pixel_metrics=["AUPRO"])#, normalization=NormalizationMethod.NONE)
+    # engine.fit(model=model, datamodule=datamodule)
+
+    # # load best model from checkpoint before evaluating
+    # test_results = engine.test(
+    #     model=model,
+    #     datamodule=datamodule
+    # )
+
+    image_AUROC = res['image_AUROC']
+    pixel_AUPRO = res['pixel_AUPRO']
 
     if args.write_scores != "":
         if args.model == "spalwinnn":
