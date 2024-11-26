@@ -128,7 +128,7 @@ def main():
 
     print(config_file)
 
-    test_results = BenchmarkJob('mps', model=model, datamodule=datamodule, seed=42, flat_cfg=config_file)
+    test_results = BenchmarkJob(args.gpu_type, model=model, datamodule=datamodule, seed=42, flat_cfg=config_file)
     res = test_results.run()
 
 
