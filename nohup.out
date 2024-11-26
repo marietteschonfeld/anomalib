@@ -1,1157 +1,0 @@
-/cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
-  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
-INFO:anomalib.models.components.base.anomaly_module:Initializing Padim model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing LWinNN model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing Patchcore model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing SPADE model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing SPALWinNN model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-GPU available: True (cuda), used: True
-TPU available: False, using: 0 TPU cores
-HPU available: False, using: 0 HPUs
-`Trainer(val_check_interval=1.0)` was configured so validation will run at the end of the training epoch..
-You are using a CUDA device ('NVIDIA RTX A5000') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-/cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/lightning/pytorch/core/optimizer.py:182: `LightningModule.configure_optimizers` returned `None`, this fit will run with no optimizer
-
-  | Name                  | Type                     | Params | Mode 
----------------------------------------------------------------------------
-0 | model                 | SPALWinNNModel           | 2.8 M  | train
-1 | _transform            | Compose                  | 0      | train
-2 | normalization_metrics | MetricCollection         | 0      | train
-3 | image_threshold       | F1AdaptiveThreshold      | 0      | train
-4 | pixel_threshold       | F1AdaptiveThreshold      | 0      | train
-5 | image_metrics         | AnomalibMetricCollection | 0      | train
-6 | pixel_metrics         | AnomalibMetricCollection | 0      | train
----------------------------------------------------------------------------
-2.8 M     Trainable params
-0         Non-trainable params
-2.8 M     Total params
-11.131    Total estimated model params size (MB)
-15        Modules in train mode
-69        Modules in eval mode
-Training: |          | 0/? [00:00<?, ?it/s]Training:   0%|          | 0/1 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/1 [00:00<?, ?it/s] /cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/lightning/pytorch/loops/optimization/automatic.py:132: `training_step` returned `None`. If this was on purpose, ignore this warning...
-Epoch 0: 100%|██████████| 1/1 [00:06<00:00,  0.15it/s]Epoch 0: 100%|██████████| 1/1 [00:06<00:00,  0.15it/s]
-Validation: |          | 0/? [00:00<?, ?it/s][AINFO:src.anomalib.models.image.spalwinnn.lightning_model:Aggregating the embedding extracted from the training set.
-INFO:src.anomalib.models.image.spalwinnn.lightning_model:Generating memory bank
-
-Validation:   0%|          | 0/1 [00:00<?, ?it/s][A
-Validation DataLoader 0:   0%|          | 0/1 [00:00<?, ?it/s][A
-Validation DataLoader 0: 100%|██████████| 1/1 [00:01<00:00,  0.80it/s][A
-                                                                      [AEpoch 0: 100%|██████████| 1/1 [00:50<00:00,  0.02it/s, pixel_AUPRO=0.939]Epoch 0: 100%|██████████| 1/1 [00:50<00:00,  0.02it/s, pixel_AUPRO=0.939]`Trainer.fit` stopped: `max_epochs=1` reached.
-Epoch 0: 100%|██████████| 1/1 [01:15<00:00,  0.01it/s, pixel_AUPRO=0.939]INFO:anomalib.callbacks.timer:Training took 76.72 seconds
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-
-Testing: |          | 0/? [00:00<?, ?it/s]Testing:   0%|          | 0/1 [00:00<?, ?it/s]Testing DataLoader 0:   0%|          | 0/1 [00:00<?, ?it/s]Testing DataLoader 0: 100%|██████████| 1/1 [00:18<00:00,  0.05it/s]INFO:anomalib.callbacks.timer:Testing took 64.00590229034424 seconds
-Throughput (batch_size=350) : 1.2967554089542326 FPS
-Testing DataLoader 0: 100%|██████████| 1/1 [01:00<00:00,  0.02it/s]
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃        Test metric        ┃       DataLoader 0        ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
-│        image_AUROC        │            1.0            │
-│        pixel_AUPRO        │    0.9404653310775757     │
-└───────────────────────────┴───────────────────────────┘
-/cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
-  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
-INFO:anomalib.models.components.base.anomaly_module:Initializing Padim model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing LWinNN model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing Patchcore model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing SPADE model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing SPALWinNN model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-GPU available: True (cuda), used: True
-TPU available: False, using: 0 TPU cores
-HPU available: False, using: 0 HPUs
-`Trainer(val_check_interval=1.0)` was configured so validation will run at the end of the training epoch..
-You are using a CUDA device ('NVIDIA RTX A5000') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-/cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/lightning/pytorch/core/optimizer.py:182: `LightningModule.configure_optimizers` returned `None`, this fit will run with no optimizer
-
-  | Name                  | Type                     | Params | Mode 
----------------------------------------------------------------------------
-0 | model                 | SPALWinNNModel           | 2.8 M  | train
-1 | _transform            | Compose                  | 0      | train
-2 | normalization_metrics | MetricCollection         | 0      | train
-3 | image_threshold       | F1AdaptiveThreshold      | 0      | train
-4 | pixel_threshold       | F1AdaptiveThreshold      | 0      | train
-5 | image_metrics         | AnomalibMetricCollection | 0      | train
-6 | pixel_metrics         | AnomalibMetricCollection | 0      | train
----------------------------------------------------------------------------
-2.8 M     Trainable params
-0         Non-trainable params
-2.8 M     Total params
-11.131    Total estimated model params size (MB)
-15        Modules in train mode
-69        Modules in eval mode
-Training: |          | 0/? [00:00<?, ?it/s]Training:   0%|          | 0/1 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/1 [00:00<?, ?it/s] /cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/lightning/pytorch/loops/optimization/automatic.py:132: `training_step` returned `None`. If this was on purpose, ignore this warning...
-Epoch 0: 100%|██████████| 1/1 [00:11<00:00,  0.09it/s]Epoch 0: 100%|██████████| 1/1 [00:11<00:00,  0.09it/s]
-Validation: |          | 0/? [00:00<?, ?it/s][AINFO:src.anomalib.models.image.spalwinnn.lightning_model:Aggregating the embedding extracted from the training set.
-INFO:src.anomalib.models.image.spalwinnn.lightning_model:Generating memory bank
-
-Validation:   0%|          | 0/1 [00:00<?, ?it/s][A
-Validation DataLoader 0:   0%|          | 0/1 [00:00<?, ?it/s][A
-Validation DataLoader 0: 100%|██████████| 1/1 [00:01<00:00,  0.51it/s][A
-                                                                      [AEpoch 0: 100%|██████████| 1/1 [02:09<00:00,  0.01it/s, pixel_AUPRO=0.906]Epoch 0: 100%|██████████| 1/1 [02:09<00:00,  0.01it/s, pixel_AUPRO=0.906]`Trainer.fit` stopped: `max_epochs=1` reached.
-Epoch 0: 100%|██████████| 1/1 [02:40<00:00,  0.01it/s, pixel_AUPRO=0.906]INFO:anomalib.callbacks.timer:Training took 162.04 seconds
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-
-Testing: |          | 0/? [00:00<?, ?it/s]Testing:   0%|          | 0/1 [00:00<?, ?it/s]Testing DataLoader 0:   0%|          | 0/1 [00:00<?, ?it/s]Testing DataLoader 0: 100%|██████████| 1/1 [00:36<00:00,  0.03it/s]INFO:anomalib.callbacks.timer:Testing took 215.61446142196655 seconds
-Throughput (batch_size=350) : 0.6956861752720923 FPS
-Testing DataLoader 0: 100%|██████████| 1/1 [03:27<00:00,  0.00it/s]
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃        Test metric        ┃       DataLoader 0        ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
-│        image_AUROC        │    0.9467766284942627     │
-│        pixel_AUPRO        │    0.9126160144805908     │
-└───────────────────────────┴───────────────────────────┘
-/cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
-  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
-INFO:anomalib.models.components.base.anomaly_module:Initializing Padim model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing LWinNN model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing Patchcore model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing SPADE model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing SPALWinNN model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-GPU available: True (cuda), used: True
-TPU available: False, using: 0 TPU cores
-HPU available: False, using: 0 HPUs
-`Trainer(val_check_interval=1.0)` was configured so validation will run at the end of the training epoch..
-You are using a CUDA device ('NVIDIA RTX A5000') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-/cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/lightning/pytorch/core/optimizer.py:182: `LightningModule.configure_optimizers` returned `None`, this fit will run with no optimizer
-
-  | Name                  | Type                     | Params | Mode 
----------------------------------------------------------------------------
-0 | model                 | SPALWinNNModel           | 2.8 M  | train
-1 | _transform            | Compose                  | 0      | train
-2 | normalization_metrics | MetricCollection         | 0      | train
-3 | image_threshold       | F1AdaptiveThreshold      | 0      | train
-4 | pixel_threshold       | F1AdaptiveThreshold      | 0      | train
-5 | image_metrics         | AnomalibMetricCollection | 0      | train
-6 | pixel_metrics         | AnomalibMetricCollection | 0      | train
----------------------------------------------------------------------------
-2.8 M     Trainable params
-0         Non-trainable params
-2.8 M     Total params
-11.131    Total estimated model params size (MB)
-15        Modules in train mode
-69        Modules in eval mode
-Training: |          | 0/? [00:00<?, ?it/s]Training:   0%|          | 0/1 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/1 [00:00<?, ?it/s] /cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/lightning/pytorch/loops/optimization/automatic.py:132: `training_step` returned `None`. If this was on purpose, ignore this warning...
-Epoch 0: 100%|██████████| 1/1 [00:10<00:00,  0.09it/s]Epoch 0: 100%|██████████| 1/1 [00:10<00:00,  0.09it/s]
-Validation: |          | 0/? [00:00<?, ?it/s][AINFO:src.anomalib.models.image.spalwinnn.lightning_model:Aggregating the embedding extracted from the training set.
-INFO:src.anomalib.models.image.spalwinnn.lightning_model:Generating memory bank
-
-Validation:   0%|          | 0/1 [00:00<?, ?it/s][A
-Validation DataLoader 0:   0%|          | 0/1 [00:00<?, ?it/s][A
-Validation DataLoader 0: 100%|██████████| 1/1 [00:01<00:00,  0.56it/s][A
-                                                                      [AEpoch 0: 100%|██████████| 1/1 [02:16<00:00,  0.01it/s, pixel_AUPRO=0.934]Epoch 0: 100%|██████████| 1/1 [02:16<00:00,  0.01it/s, pixel_AUPRO=0.934]`Trainer.fit` stopped: `max_epochs=1` reached.
-Epoch 0: 100%|██████████| 1/1 [02:49<00:00,  0.01it/s, pixel_AUPRO=0.934]INFO:anomalib.callbacks.timer:Training took 170.90 seconds
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-
-Testing: |          | 0/? [00:00<?, ?it/s]Testing:   0%|          | 0/1 [00:00<?, ?it/s]Testing DataLoader 0:   0%|          | 0/1 [00:00<?, ?it/s]Testing DataLoader 0: 100%|██████████| 1/1 [00:31<00:00,  0.03it/s]INFO:anomalib.callbacks.timer:Testing took 161.93151092529297 seconds
-Throughput (batch_size=350) : 0.8151594414560742 FPS
-Testing DataLoader 0: 100%|██████████| 1/1 [02:35<00:00,  0.01it/s]
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃        Test metric        ┃       DataLoader 0        ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
-│        image_AUROC        │    0.9485440254211426     │
-│        pixel_AUPRO        │    0.9343838691711426     │
-└───────────────────────────┴───────────────────────────┘
-/cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
-  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
-INFO:anomalib.models.components.base.anomaly_module:Initializing Padim model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing LWinNN model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing Patchcore model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing SPADE model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing SPALWinNN model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-GPU available: True (cuda), used: True
-TPU available: False, using: 0 TPU cores
-HPU available: False, using: 0 HPUs
-`Trainer(val_check_interval=1.0)` was configured so validation will run at the end of the training epoch..
-You are using a CUDA device ('NVIDIA RTX A5000') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-/cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/lightning/pytorch/core/optimizer.py:182: `LightningModule.configure_optimizers` returned `None`, this fit will run with no optimizer
-
-  | Name                  | Type                     | Params | Mode 
----------------------------------------------------------------------------
-0 | model                 | SPALWinNNModel           | 2.8 M  | train
-1 | _transform            | Compose                  | 0      | train
-2 | normalization_metrics | MetricCollection         | 0      | train
-3 | image_threshold       | F1AdaptiveThreshold      | 0      | train
-4 | pixel_threshold       | F1AdaptiveThreshold      | 0      | train
-5 | image_metrics         | AnomalibMetricCollection | 0      | train
-6 | pixel_metrics         | AnomalibMetricCollection | 0      | train
----------------------------------------------------------------------------
-2.8 M     Trainable params
-0         Non-trainable params
-2.8 M     Total params
-11.131    Total estimated model params size (MB)
-15        Modules in train mode
-69        Modules in eval mode
-Training: |          | 0/? [00:00<?, ?it/s]Training:   0%|          | 0/1 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/1 [00:00<?, ?it/s] /cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/lightning/pytorch/loops/optimization/automatic.py:132: `training_step` returned `None`. If this was on purpose, ignore this warning...
-Epoch 0: 100%|██████████| 1/1 [00:13<00:00,  0.08it/s]Epoch 0: 100%|██████████| 1/1 [00:13<00:00,  0.08it/s]
-Validation: |          | 0/? [00:00<?, ?it/s][AINFO:src.anomalib.models.image.spalwinnn.lightning_model:Aggregating the embedding extracted from the training set.
-INFO:src.anomalib.models.image.spalwinnn.lightning_model:Generating memory bank
-
-Validation:   0%|          | 0/1 [00:00<?, ?it/s][A
-Validation DataLoader 0:   0%|          | 0/1 [00:00<?, ?it/s][A
-Validation DataLoader 0: 100%|██████████| 1/1 [00:01<00:00,  0.74it/s][A
-                                                                      [AEpoch 0: 100%|██████████| 1/1 [01:24<00:00,  0.01it/s, pixel_AUPRO=0.950]Epoch 0: 100%|██████████| 1/1 [01:24<00:00,  0.01it/s, pixel_AUPRO=0.950]`Trainer.fit` stopped: `max_epochs=1` reached.
-Epoch 0: 100%|██████████| 1/1 [01:57<00:00,  0.01it/s, pixel_AUPRO=0.950]INFO:anomalib.callbacks.timer:Training took 119.14 seconds
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-
-Testing: |          | 0/? [00:00<?, ?it/s]Testing:   0%|          | 0/1 [00:00<?, ?it/s]Testing DataLoader 0:   0%|          | 0/1 [00:00<?, ?it/s]Testing DataLoader 0: 100%|██████████| 1/1 [00:28<00:00,  0.03it/s]INFO:anomalib.callbacks.timer:Testing took 122.79617404937744 seconds
-Throughput (batch_size=350) : 0.9527984149811806 FPS
-Testing DataLoader 0: 100%|██████████| 1/1 [01:56<00:00,  0.01it/s]
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃        Test metric        ┃       DataLoader 0        ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
-│        image_AUROC        │    0.9859549403190613     │
-│        pixel_AUPRO        │    0.9503723978996277     │
-└───────────────────────────┴───────────────────────────┘
-/cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
-  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
-INFO:anomalib.models.components.base.anomaly_module:Initializing Padim model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing LWinNN model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing Patchcore model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing SPADE model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing SPALWinNN model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-GPU available: True (cuda), used: True
-TPU available: False, using: 0 TPU cores
-HPU available: False, using: 0 HPUs
-`Trainer(val_check_interval=1.0)` was configured so validation will run at the end of the training epoch..
-You are using a CUDA device ('NVIDIA RTX A5000') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-/cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/lightning/pytorch/core/optimizer.py:182: `LightningModule.configure_optimizers` returned `None`, this fit will run with no optimizer
-
-  | Name                  | Type                     | Params | Mode 
----------------------------------------------------------------------------
-0 | model                 | SPALWinNNModel           | 2.8 M  | train
-1 | _transform            | Compose                  | 0      | train
-2 | normalization_metrics | MetricCollection         | 0      | train
-3 | image_threshold       | F1AdaptiveThreshold      | 0      | train
-4 | pixel_threshold       | F1AdaptiveThreshold      | 0      | train
-5 | image_metrics         | AnomalibMetricCollection | 0      | train
-6 | pixel_metrics         | AnomalibMetricCollection | 0      | train
----------------------------------------------------------------------------
-2.8 M     Trainable params
-0         Non-trainable params
-2.8 M     Total params
-11.131    Total estimated model params size (MB)
-15        Modules in train mode
-69        Modules in eval mode
-Training: |          | 0/? [00:00<?, ?it/s]Training:   0%|          | 0/1 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/1 [00:00<?, ?it/s] /cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/lightning/pytorch/loops/optimization/automatic.py:132: `training_step` returned `None`. If this was on purpose, ignore this warning...
-Epoch 0: 100%|██████████| 1/1 [00:07<00:00,  0.14it/s]Epoch 0: 100%|██████████| 1/1 [00:07<00:00,  0.14it/s]
-Validation: |          | 0/? [00:00<?, ?it/s][AINFO:src.anomalib.models.image.spalwinnn.lightning_model:Aggregating the embedding extracted from the training set.
-INFO:src.anomalib.models.image.spalwinnn.lightning_model:Generating memory bank
-
-Validation:   0%|          | 0/1 [00:00<?, ?it/s][A
-Validation DataLoader 0:   0%|          | 0/1 [00:00<?, ?it/s][A
-Validation DataLoader 0: 100%|██████████| 1/1 [00:01<00:00,  0.75it/s][A
-                                                                      [AEpoch 0: 100%|██████████| 1/1 [01:17<00:00,  0.01it/s, pixel_AUPRO=0.845]Epoch 0: 100%|██████████| 1/1 [01:17<00:00,  0.01it/s, pixel_AUPRO=0.845]`Trainer.fit` stopped: `max_epochs=1` reached.
-Epoch 0: 100%|██████████| 1/1 [01:58<00:00,  0.01it/s, pixel_AUPRO=0.845]INFO:anomalib.callbacks.timer:Training took 119.75 seconds
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-
-Testing: |          | 0/? [00:00<?, ?it/s]Testing:   0%|          | 0/1 [00:00<?, ?it/s]Testing DataLoader 0:   0%|          | 0/1 [00:00<?, ?it/s]Testing DataLoader 0: 100%|██████████| 1/1 [00:16<00:00,  0.06it/s]INFO:anomalib.callbacks.timer:Testing took 121.19254565238953 seconds
-Throughput (batch_size=350) : 0.6436039409859702 FPS
-Testing DataLoader 0: 100%|██████████| 1/1 [01:58<00:00,  0.01it/s]
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃        Test metric        ┃       DataLoader 0        ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
-│        image_AUROC        │    0.9598997831344604     │
-│        pixel_AUPRO        │     0.845326840877533     │
-└───────────────────────────┴───────────────────────────┘
-/cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
-  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
-INFO:anomalib.models.components.base.anomaly_module:Initializing Padim model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing LWinNN model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing Patchcore model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing SPADE model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing SPALWinNN model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-GPU available: True (cuda), used: True
-TPU available: False, using: 0 TPU cores
-HPU available: False, using: 0 HPUs
-`Trainer(val_check_interval=1.0)` was configured so validation will run at the end of the training epoch..
-You are using a CUDA device ('NVIDIA RTX A5000') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-/cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/lightning/pytorch/core/optimizer.py:182: `LightningModule.configure_optimizers` returned `None`, this fit will run with no optimizer
-
-  | Name                  | Type                     | Params | Mode 
----------------------------------------------------------------------------
-0 | model                 | SPALWinNNModel           | 2.8 M  | train
-1 | _transform            | Compose                  | 0      | train
-2 | normalization_metrics | MetricCollection         | 0      | train
-3 | image_threshold       | F1AdaptiveThreshold      | 0      | train
-4 | pixel_threshold       | F1AdaptiveThreshold      | 0      | train
-5 | image_metrics         | AnomalibMetricCollection | 0      | train
-6 | pixel_metrics         | AnomalibMetricCollection | 0      | train
----------------------------------------------------------------------------
-2.8 M     Trainable params
-0         Non-trainable params
-2.8 M     Total params
-11.131    Total estimated model params size (MB)
-15        Modules in train mode
-69        Modules in eval mode
-Training: |          | 0/? [00:00<?, ?it/s]Training:   0%|          | 0/2 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/2 [00:00<?, ?it/s] /cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/lightning/pytorch/loops/optimization/automatic.py:132: `training_step` returned `None`. If this was on purpose, ignore this warning...
-Epoch 0:  50%|█████     | 1/2 [00:16<00:16,  0.06it/s]Epoch 0:  50%|█████     | 1/2 [00:16<00:16,  0.06it/s]Epoch 0: 100%|██████████| 2/2 [00:16<00:00,  0.12it/s]Epoch 0: 100%|██████████| 2/2 [00:16<00:00,  0.12it/s]
-Validation: |          | 0/? [00:00<?, ?it/s][AINFO:src.anomalib.models.image.spalwinnn.lightning_model:Aggregating the embedding extracted from the training set.
-INFO:src.anomalib.models.image.spalwinnn.lightning_model:Generating memory bank
-
-Validation:   0%|          | 0/1 [00:00<?, ?it/s][A
-Validation DataLoader 0:   0%|          | 0/1 [00:00<?, ?it/s][A
-Validation DataLoader 0: 100%|██████████| 1/1 [00:01<00:00,  0.50it/s][A
-                                                                      [AEpoch 0: 100%|██████████| 2/2 [01:55<00:00,  0.02it/s, pixel_AUPRO=0.941]Epoch 0: 100%|██████████| 2/2 [01:55<00:00,  0.02it/s, pixel_AUPRO=0.941]`Trainer.fit` stopped: `max_epochs=1` reached.
-Epoch 0: 100%|██████████| 2/2 [02:53<00:00,  0.01it/s, pixel_AUPRO=0.941]INFO:anomalib.callbacks.timer:Training took 175.21 seconds
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-
-Testing: |          | 0/? [00:00<?, ?it/s]Testing:   0%|          | 0/1 [00:00<?, ?it/s]Testing DataLoader 0:   0%|          | 0/1 [00:00<?, ?it/s]Testing DataLoader 0: 100%|██████████| 1/1 [00:24<00:00,  0.04it/s]INFO:anomalib.callbacks.timer:Testing took 143.07350945472717 seconds
-Throughput (batch_size=350) : 0.7688355476791275 FPS
-Testing DataLoader 0: 100%|██████████| 1/1 [02:17<00:00,  0.01it/s]
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃        Test metric        ┃       DataLoader 0        ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
-│        image_AUROC        │    0.9928572177886963     │
-│        pixel_AUPRO        │    0.9475301504135132     │
-└───────────────────────────┴───────────────────────────┘
-/cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
-  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
-INFO:anomalib.models.components.base.anomaly_module:Initializing Padim model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing LWinNN model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing Patchcore model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing SPADE model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing SPALWinNN model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-GPU available: True (cuda), used: True
-TPU available: False, using: 0 TPU cores
-HPU available: False, using: 0 HPUs
-`Trainer(val_check_interval=1.0)` was configured so validation will run at the end of the training epoch..
-You are using a CUDA device ('NVIDIA RTX A5000') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-/cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/lightning/pytorch/core/optimizer.py:182: `LightningModule.configure_optimizers` returned `None`, this fit will run with no optimizer
-
-  | Name                  | Type                     | Params | Mode 
----------------------------------------------------------------------------
-0 | model                 | SPALWinNNModel           | 2.8 M  | train
-1 | _transform            | Compose                  | 0      | train
-2 | normalization_metrics | MetricCollection         | 0      | train
-3 | image_threshold       | F1AdaptiveThreshold      | 0      | train
-4 | pixel_threshold       | F1AdaptiveThreshold      | 0      | train
-5 | image_metrics         | AnomalibMetricCollection | 0      | train
-6 | pixel_metrics         | AnomalibMetricCollection | 0      | train
----------------------------------------------------------------------------
-2.8 M     Trainable params
-0         Non-trainable params
-2.8 M     Total params
-11.131    Total estimated model params size (MB)
-15        Modules in train mode
-69        Modules in eval mode
-Training: |          | 0/? [00:00<?, ?it/s]Training:   0%|          | 0/1 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/1 [00:00<?, ?it/s] /cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/lightning/pytorch/loops/optimization/automatic.py:132: `training_step` returned `None`. If this was on purpose, ignore this warning...
-Epoch 0: 100%|██████████| 1/1 [00:10<00:00,  0.10it/s]Epoch 0: 100%|██████████| 1/1 [00:10<00:00,  0.10it/s]
-Validation: |          | 0/? [00:00<?, ?it/s][AINFO:src.anomalib.models.image.spalwinnn.lightning_model:Aggregating the embedding extracted from the training set.
-INFO:src.anomalib.models.image.spalwinnn.lightning_model:Generating memory bank
-
-Validation:   0%|          | 0/1 [00:00<?, ?it/s][A
-Validation DataLoader 0:   0%|          | 0/1 [00:00<?, ?it/s][A
-Validation DataLoader 0: 100%|██████████| 1/1 [00:01<00:00,  0.61it/s][A
-                                                                      [AEpoch 0: 100%|██████████| 1/1 [01:32<00:00,  0.01it/s, pixel_AUPRO=0.970]Epoch 0: 100%|██████████| 1/1 [01:32<00:00,  0.01it/s, pixel_AUPRO=0.970]`Trainer.fit` stopped: `max_epochs=1` reached.
-Epoch 0: 100%|██████████| 1/1 [02:06<00:00,  0.01it/s, pixel_AUPRO=0.970]INFO:anomalib.callbacks.timer:Training took 127.91 seconds
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-
-Testing: |          | 0/? [00:00<?, ?it/s]Testing:   0%|          | 0/1 [00:00<?, ?it/s]Testing DataLoader 0:   0%|          | 0/1 [00:00<?, ?it/s]Testing DataLoader 0: 100%|██████████| 1/1 [00:30<00:00,  0.03it/s]INFO:anomalib.callbacks.timer:Testing took 133.0859591960907 seconds
-Throughput (batch_size=350) : 0.9317286417667597 FPS
-Testing DataLoader 0: 100%|██████████| 1/1 [02:06<00:00,  0.01it/s]
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃        Test metric        ┃       DataLoader 0        ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
-│        image_AUROC        │     0.999660313129425     │
-│        pixel_AUPRO        │    0.9702548384666443     │
-└───────────────────────────┴───────────────────────────┘
-/cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
-  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
-INFO:anomalib.models.components.base.anomaly_module:Initializing Padim model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing LWinNN model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing Patchcore model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing SPADE model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing SPALWinNN model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-GPU available: True (cuda), used: True
-TPU available: False, using: 0 TPU cores
-HPU available: False, using: 0 HPUs
-`Trainer(val_check_interval=1.0)` was configured so validation will run at the end of the training epoch..
-You are using a CUDA device ('NVIDIA RTX A5000') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-/cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/lightning/pytorch/core/optimizer.py:182: `LightningModule.configure_optimizers` returned `None`, this fit will run with no optimizer
-
-  | Name                  | Type                     | Params | Mode 
----------------------------------------------------------------------------
-0 | model                 | SPALWinNNModel           | 2.8 M  | train
-1 | _transform            | Compose                  | 0      | train
-2 | normalization_metrics | MetricCollection         | 0      | train
-3 | image_threshold       | F1AdaptiveThreshold      | 0      | train
-4 | pixel_threshold       | F1AdaptiveThreshold      | 0      | train
-5 | image_metrics         | AnomalibMetricCollection | 0      | train
-6 | pixel_metrics         | AnomalibMetricCollection | 0      | train
----------------------------------------------------------------------------
-2.8 M     Trainable params
-0         Non-trainable params
-2.8 M     Total params
-11.131    Total estimated model params size (MB)
-15        Modules in train mode
-69        Modules in eval mode
-Training: |          | 0/? [00:00<?, ?it/s]Training:   0%|          | 0/1 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/1 [00:00<?, ?it/s] /cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/lightning/pytorch/loops/optimization/automatic.py:132: `training_step` returned `None`. If this was on purpose, ignore this warning...
-Epoch 0: 100%|██████████| 1/1 [00:05<00:00,  0.19it/s]Epoch 0: 100%|██████████| 1/1 [00:05<00:00,  0.19it/s]
-Validation: |          | 0/? [00:00<?, ?it/s][AINFO:src.anomalib.models.image.spalwinnn.lightning_model:Aggregating the embedding extracted from the training set.
-INFO:src.anomalib.models.image.spalwinnn.lightning_model:Generating memory bank
-
-Validation:   0%|          | 0/1 [00:00<?, ?it/s][A
-Validation DataLoader 0:   0%|          | 0/1 [00:00<?, ?it/s][A
-Validation DataLoader 0: 100%|██████████| 1/1 [00:01<00:00,  0.57it/s][A
-                                                                      [AEpoch 0: 100%|██████████| 1/1 [01:38<00:00,  0.01it/s, pixel_AUPRO=0.936]Epoch 0: 100%|██████████| 1/1 [01:38<00:00,  0.01it/s, pixel_AUPRO=0.936]`Trainer.fit` stopped: `max_epochs=1` reached.
-Epoch 0: 100%|██████████| 1/1 [02:22<00:00,  0.01it/s, pixel_AUPRO=0.936]INFO:anomalib.callbacks.timer:Training took 143.15 seconds
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-
-Testing: |          | 0/? [00:00<?, ?it/s]Testing:   0%|          | 0/1 [00:00<?, ?it/s]Testing DataLoader 0:   0%|          | 0/1 [00:00<?, ?it/s]Testing DataLoader 0: 100%|██████████| 1/1 [00:23<00:00,  0.04it/s]INFO:anomalib.callbacks.timer:Testing took 132.4884204864502 seconds
-Throughput (batch_size=350) : 0.86800038507336 FPS
-Testing DataLoader 0: 100%|██████████| 1/1 [02:09<00:00,  0.01it/s]
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃        Test metric        ┃       DataLoader 0        ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
-│        image_AUROC        │    0.9941349029541016     │
-│        pixel_AUPRO        │    0.9369914531707764     │
-└───────────────────────────┴───────────────────────────┘
-/cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
-  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
-INFO:anomalib.models.components.base.anomaly_module:Initializing Padim model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing LWinNN model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing Patchcore model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing SPADE model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing SPALWinNN model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-GPU available: True (cuda), used: True
-TPU available: False, using: 0 TPU cores
-HPU available: False, using: 0 HPUs
-`Trainer(val_check_interval=1.0)` was configured so validation will run at the end of the training epoch..
-You are using a CUDA device ('NVIDIA RTX A5000') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-/cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/lightning/pytorch/core/optimizer.py:182: `LightningModule.configure_optimizers` returned `None`, this fit will run with no optimizer
-
-  | Name                  | Type                     | Params | Mode 
----------------------------------------------------------------------------
-0 | model                 | SPALWinNNModel           | 2.8 M  | train
-1 | _transform            | Compose                  | 0      | train
-2 | normalization_metrics | MetricCollection         | 0      | train
-3 | image_threshold       | F1AdaptiveThreshold      | 0      | train
-4 | pixel_threshold       | F1AdaptiveThreshold      | 0      | train
-5 | image_metrics         | AnomalibMetricCollection | 0      | train
-6 | pixel_metrics         | AnomalibMetricCollection | 0      | train
----------------------------------------------------------------------------
-2.8 M     Trainable params
-0         Non-trainable params
-2.8 M     Total params
-11.131    Total estimated model params size (MB)
-15        Modules in train mode
-69        Modules in eval mode
-Training: |          | 0/? [00:00<?, ?it/s]Training:   0%|          | 0/1 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/1 [00:00<?, ?it/s] /cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/lightning/pytorch/loops/optimization/automatic.py:132: `training_step` returned `None`. If this was on purpose, ignore this warning...
-Epoch 0: 100%|██████████| 1/1 [00:08<00:00,  0.12it/s]Epoch 0: 100%|██████████| 1/1 [00:08<00:00,  0.12it/s]
-Validation: |          | 0/? [00:00<?, ?it/s][AINFO:src.anomalib.models.image.spalwinnn.lightning_model:Aggregating the embedding extracted from the training set.
-INFO:src.anomalib.models.image.spalwinnn.lightning_model:Generating memory bank
-
-Validation:   0%|          | 0/1 [00:00<?, ?it/s][A
-Validation DataLoader 0:   0%|          | 0/1 [00:00<?, ?it/s][A
-Validation DataLoader 0: 100%|██████████| 1/1 [00:02<00:00,  0.49it/s][A
-                                                                      [AEpoch 0: 100%|██████████| 1/1 [04:37<00:00,  0.00it/s, pixel_AUPRO=0.947]Epoch 0: 100%|██████████| 1/1 [04:37<00:00,  0.00it/s, pixel_AUPRO=0.947]`Trainer.fit` stopped: `max_epochs=1` reached.
-Epoch 0: 100%|██████████| 1/1 [05:25<00:00,  0.00it/s, pixel_AUPRO=0.947]INFO:anomalib.callbacks.timer:Training took 330.98 seconds
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-
-Testing: |          | 0/? [00:00<?, ?it/s]Testing:   0%|          | 0/1 [00:00<?, ?it/s]Testing DataLoader 0:   0%|          | 0/1 [00:00<?, ?it/s]Testing DataLoader 0: 100%|██████████| 1/1 [00:34<00:00,  0.03it/s]INFO:anomalib.callbacks.timer:Testing took 351.3060038089752 seconds
-Throughput (batch_size=350) : 0.47536904632807603 FPS
-Testing DataLoader 0: 100%|██████████| 1/1 [05:37<00:00,  0.00it/s]
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃        Test metric        ┃       DataLoader 0        ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
-│        image_AUROC        │    0.8936170935630798     │
-│        pixel_AUPRO        │    0.9473289251327515     │
-└───────────────────────────┴───────────────────────────┘
-/cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
-  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
-INFO:anomalib.models.components.base.anomaly_module:Initializing Padim model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing LWinNN model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing Patchcore model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing SPADE model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing SPALWinNN model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-GPU available: True (cuda), used: True
-TPU available: False, using: 0 TPU cores
-HPU available: False, using: 0 HPUs
-`Trainer(val_check_interval=1.0)` was configured so validation will run at the end of the training epoch..
-You are using a CUDA device ('NVIDIA RTX A5000') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-/cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/lightning/pytorch/core/optimizer.py:182: `LightningModule.configure_optimizers` returned `None`, this fit will run with no optimizer
-
-  | Name                  | Type                     | Params | Mode 
----------------------------------------------------------------------------
-0 | model                 | SPALWinNNModel           | 2.8 M  | train
-1 | _transform            | Compose                  | 0      | train
-2 | normalization_metrics | MetricCollection         | 0      | train
-3 | image_threshold       | F1AdaptiveThreshold      | 0      | train
-4 | pixel_threshold       | F1AdaptiveThreshold      | 0      | train
-5 | image_metrics         | AnomalibMetricCollection | 0      | train
-6 | pixel_metrics         | AnomalibMetricCollection | 0      | train
----------------------------------------------------------------------------
-2.8 M     Trainable params
-0         Non-trainable params
-2.8 M     Total params
-11.131    Total estimated model params size (MB)
-15        Modules in train mode
-69        Modules in eval mode
-Training: |          | 0/? [00:00<?, ?it/s]Training:   0%|          | 0/1 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/1 [00:00<?, ?it/s] /cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/lightning/pytorch/loops/optimization/automatic.py:132: `training_step` returned `None`. If this was on purpose, ignore this warning...
-Epoch 0: 100%|██████████| 1/1 [00:09<00:00,  0.11it/s]Epoch 0: 100%|██████████| 1/1 [00:09<00:00,  0.11it/s]
-Validation: |          | 0/? [00:00<?, ?it/s][AINFO:src.anomalib.models.image.spalwinnn.lightning_model:Aggregating the embedding extracted from the training set.
-INFO:src.anomalib.models.image.spalwinnn.lightning_model:Generating memory bank
-
-Validation:   0%|          | 0/1 [00:00<?, ?it/s][A
-Validation DataLoader 0:   0%|          | 0/1 [00:00<?, ?it/s][A
-Validation DataLoader 0: 100%|██████████| 1/1 [00:02<00:00,  0.37it/s][A
-                                                                      [AEpoch 0: 100%|██████████| 1/1 [02:45<00:00,  0.01it/s, pixel_AUPRO=0.960]Epoch 0: 100%|██████████| 1/1 [02:45<00:00,  0.01it/s, pixel_AUPRO=0.960]`Trainer.fit` stopped: `max_epochs=1` reached.
-Epoch 0: 100%|██████████| 1/1 [04:02<00:00,  0.00it/s, pixel_AUPRO=0.960]INFO:anomalib.callbacks.timer:Training took 243.92 seconds
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-
-Testing: |          | 0/? [00:00<?, ?it/s]Testing:   0%|          | 0/1 [00:00<?, ?it/s]Testing DataLoader 0:   0%|          | 0/1 [00:00<?, ?it/s]Testing DataLoader 0: 100%|██████████| 1/1 [00:34<00:00,  0.03it/s]INFO:anomalib.callbacks.timer:Testing took 209.1078543663025 seconds
-Throughput (batch_size=350) : 0.7651553811064489 FPS
-Testing DataLoader 0: 100%|██████████| 1/1 [03:24<00:00,  0.00it/s]
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃        Test metric        ┃       DataLoader 0        ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
-│        image_AUROC        │    0.9696658849716187     │
-│        pixel_AUPRO        │     0.959700345993042     │
-└───────────────────────────┴───────────────────────────┘
-/cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
-  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
-INFO:anomalib.models.components.base.anomaly_module:Initializing Padim model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing LWinNN model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing Patchcore model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing SPADE model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing SPALWinNN model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-GPU available: True (cuda), used: True
-TPU available: False, using: 0 TPU cores
-HPU available: False, using: 0 HPUs
-`Trainer(val_check_interval=1.0)` was configured so validation will run at the end of the training epoch..
-You are using a CUDA device ('NVIDIA RTX A5000') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-/cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/lightning/pytorch/core/optimizer.py:182: `LightningModule.configure_optimizers` returned `None`, this fit will run with no optimizer
-
-  | Name                  | Type                     | Params | Mode 
----------------------------------------------------------------------------
-0 | model                 | SPALWinNNModel           | 2.8 M  | train
-1 | _transform            | Compose                  | 0      | train
-2 | normalization_metrics | MetricCollection         | 0      | train
-3 | image_threshold       | F1AdaptiveThreshold      | 0      | train
-4 | pixel_threshold       | F1AdaptiveThreshold      | 0      | train
-5 | image_metrics         | AnomalibMetricCollection | 0      | train
-6 | pixel_metrics         | AnomalibMetricCollection | 0      | train
----------------------------------------------------------------------------
-2.8 M     Trainable params
-0         Non-trainable params
-2.8 M     Total params
-11.131    Total estimated model params size (MB)
-15        Modules in train mode
-69        Modules in eval mode
-Training: |          | 0/? [00:00<?, ?it/s]Training:   0%|          | 0/1 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/1 [00:00<?, ?it/s] /cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/lightning/pytorch/loops/optimization/automatic.py:132: `training_step` returned `None`. If this was on purpose, ignore this warning...
-Epoch 0: 100%|██████████| 1/1 [00:08<00:00,  0.12it/s]Epoch 0: 100%|██████████| 1/1 [00:08<00:00,  0.12it/s]
-Validation: |          | 0/? [00:00<?, ?it/s][AINFO:src.anomalib.models.image.spalwinnn.lightning_model:Aggregating the embedding extracted from the training set.
-INFO:src.anomalib.models.image.spalwinnn.lightning_model:Generating memory bank
-
-Validation:   0%|          | 0/1 [00:00<?, ?it/s][A
-Validation DataLoader 0:   0%|          | 0/1 [00:00<?, ?it/s][A
-Validation DataLoader 0: 100%|██████████| 1/1 [00:01<00:00,  0.74it/s][A
-                                                                      [AEpoch 0: 100%|██████████| 1/1 [01:03<00:00,  0.02it/s, pixel_AUPRO=0.812]Epoch 0: 100%|██████████| 1/1 [01:03<00:00,  0.02it/s, pixel_AUPRO=0.812]`Trainer.fit` stopped: `max_epochs=1` reached.
-Epoch 0: 100%|██████████| 1/1 [01:47<00:00,  0.01it/s, pixel_AUPRO=0.812]INFO:anomalib.callbacks.timer:Training took 108.95 seconds
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-
-Testing: |          | 0/? [00:00<?, ?it/s]Testing:   0%|          | 0/1 [00:00<?, ?it/s]Testing DataLoader 0:   0%|          | 0/1 [00:00<?, ?it/s]Testing DataLoader 0: 100%|██████████| 1/1 [00:27<00:00,  0.04it/s]INFO:anomalib.callbacks.timer:Testing took 111.51278281211853 seconds
-Throughput (batch_size=350) : 1.049207068907307 FPS
-Testing DataLoader 0: 100%|██████████| 1/1 [01:47<00:00,  0.01it/s]
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃        Test metric        ┃       DataLoader 0        ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
-│        image_AUROC        │     0.984487771987915     │
-│        pixel_AUPRO        │    0.8139019012451172     │
-└───────────────────────────┴───────────────────────────┘
-/cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
-  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
-INFO:anomalib.models.components.base.anomaly_module:Initializing Padim model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing LWinNN model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing Patchcore model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing SPADE model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing SPALWinNN model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-GPU available: True (cuda), used: True
-TPU available: False, using: 0 TPU cores
-HPU available: False, using: 0 HPUs
-`Trainer(val_check_interval=1.0)` was configured so validation will run at the end of the training epoch..
-You are using a CUDA device ('NVIDIA RTX A5000') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-/cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/lightning/pytorch/core/optimizer.py:182: `LightningModule.configure_optimizers` returned `None`, this fit will run with no optimizer
-
-  | Name                  | Type                     | Params | Mode 
----------------------------------------------------------------------------
-0 | model                 | SPALWinNNModel           | 2.8 M  | train
-1 | _transform            | Compose                  | 0      | train
-2 | normalization_metrics | MetricCollection         | 0      | train
-3 | image_threshold       | F1AdaptiveThreshold      | 0      | train
-4 | pixel_threshold       | F1AdaptiveThreshold      | 0      | train
-5 | image_metrics         | AnomalibMetricCollection | 0      | train
-6 | pixel_metrics         | AnomalibMetricCollection | 0      | train
----------------------------------------------------------------------------
-2.8 M     Trainable params
-0         Non-trainable params
-2.8 M     Total params
-11.131    Total estimated model params size (MB)
-15        Modules in train mode
-69        Modules in eval mode
-Training: |          | 0/? [00:00<?, ?it/s]Training:   0%|          | 0/1 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/1 [00:00<?, ?it/s] /cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/lightning/pytorch/loops/optimization/automatic.py:132: `training_step` returned `None`. If this was on purpose, ignore this warning...
-Epoch 0: 100%|██████████| 1/1 [00:03<00:00,  0.33it/s]Epoch 0: 100%|██████████| 1/1 [00:03<00:00,  0.33it/s]
-Validation: |          | 0/? [00:00<?, ?it/s][AINFO:src.anomalib.models.image.spalwinnn.lightning_model:Aggregating the embedding extracted from the training set.
-INFO:src.anomalib.models.image.spalwinnn.lightning_model:Generating memory bank
-
-Validation:   0%|          | 0/1 [00:00<?, ?it/s][A
-Validation DataLoader 0:   0%|          | 0/1 [00:00<?, ?it/s][A
-Validation DataLoader 0: 100%|██████████| 1/1 [00:01<00:00,  0.78it/s][A
-                                                                      [AEpoch 0: 100%|██████████| 1/1 [00:26<00:00,  0.04it/s, pixel_AUPRO=0.915]Epoch 0: 100%|██████████| 1/1 [00:26<00:00,  0.04it/s, pixel_AUPRO=0.915]`Trainer.fit` stopped: `max_epochs=1` reached.
-Epoch 0: 100%|██████████| 1/1 [00:37<00:00,  0.03it/s, pixel_AUPRO=0.915]INFO:anomalib.callbacks.timer:Training took 38.53 seconds
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-
-Testing: |          | 0/? [00:00<?, ?it/s]Testing:   0%|          | 0/1 [00:00<?, ?it/s]Testing DataLoader 0:   0%|          | 0/1 [00:00<?, ?it/s]Testing DataLoader 0: 100%|██████████| 1/1 [00:13<00:00,  0.07it/s]INFO:anomalib.callbacks.timer:Testing took 36.237444162368774 seconds
-Throughput (batch_size=350) : 1.159022137759247 FPS
-Testing DataLoader 0: 100%|██████████| 1/1 [00:34<00:00,  0.03it/s]
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃        Test metric        ┃       DataLoader 0        ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
-│        image_AUROC        │    0.9583333134651184     │
-│        pixel_AUPRO        │    0.9161926507949829     │
-└───────────────────────────┴───────────────────────────┘
-/cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
-  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
-INFO:anomalib.models.components.base.anomaly_module:Initializing Padim model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing LWinNN model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing Patchcore model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing SPADE model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing SPALWinNN model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-GPU available: True (cuda), used: True
-TPU available: False, using: 0 TPU cores
-HPU available: False, using: 0 HPUs
-`Trainer(val_check_interval=1.0)` was configured so validation will run at the end of the training epoch..
-You are using a CUDA device ('NVIDIA RTX A5000') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-/cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/lightning/pytorch/core/optimizer.py:182: `LightningModule.configure_optimizers` returned `None`, this fit will run with no optimizer
-
-  | Name                  | Type                     | Params | Mode 
----------------------------------------------------------------------------
-0 | model                 | SPALWinNNModel           | 2.8 M  | train
-1 | _transform            | Compose                  | 0      | train
-2 | normalization_metrics | MetricCollection         | 0      | train
-3 | image_threshold       | F1AdaptiveThreshold      | 0      | train
-4 | pixel_threshold       | F1AdaptiveThreshold      | 0      | train
-5 | image_metrics         | AnomalibMetricCollection | 0      | train
-6 | pixel_metrics         | AnomalibMetricCollection | 0      | train
----------------------------------------------------------------------------
-2.8 M     Trainable params
-0         Non-trainable params
-2.8 M     Total params
-11.131    Total estimated model params size (MB)
-15        Modules in train mode
-69        Modules in eval mode
-Training: |          | 0/? [00:00<?, ?it/s]Training:   0%|          | 0/1 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/1 [00:00<?, ?it/s] /cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/lightning/pytorch/loops/optimization/automatic.py:132: `training_step` returned `None`. If this was on purpose, ignore this warning...
-Epoch 0: 100%|██████████| 1/1 [00:16<00:00,  0.06it/s]Epoch 0: 100%|██████████| 1/1 [00:16<00:00,  0.06it/s]
-Validation: |          | 0/? [00:00<?, ?it/s][AINFO:src.anomalib.models.image.spalwinnn.lightning_model:Aggregating the embedding extracted from the training set.
-INFO:src.anomalib.models.image.spalwinnn.lightning_model:Generating memory bank
-
-Validation:   0%|          | 0/1 [00:00<?, ?it/s][A
-Validation DataLoader 0:   0%|          | 0/1 [00:00<?, ?it/s][A
-Validation DataLoader 0: 100%|██████████| 1/1 [00:01<00:00,  0.80it/s][A
-                                                                      [AEpoch 0: 100%|██████████| 1/1 [00:50<00:00,  0.02it/s, pixel_AUPRO=0.949]Epoch 0: 100%|██████████| 1/1 [00:50<00:00,  0.02it/s, pixel_AUPRO=0.949]`Trainer.fit` stopped: `max_epochs=1` reached.
-Epoch 0: 100%|██████████| 1/1 [01:42<00:00,  0.01it/s, pixel_AUPRO=0.949]INFO:anomalib.callbacks.timer:Training took 103.88 seconds
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-
-Testing: |          | 0/? [00:00<?, ?it/s]Testing:   0%|          | 0/1 [00:00<?, ?it/s]Testing DataLoader 0:   0%|          | 0/1 [00:00<?, ?it/s]Testing DataLoader 0: 100%|██████████| 1/1 [00:28<00:00,  0.04it/s]INFO:anomalib.callbacks.timer:Testing took 67.16397094726562 seconds
-Throughput (batch_size=350) : 1.4888935033117066 FPS
-Testing DataLoader 0: 100%|██████████| 1/1 [01:01<00:00,  0.02it/s]
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃        Test metric        ┃       DataLoader 0        ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
-│        image_AUROC        │    0.9854166507720947     │
-│        pixel_AUPRO        │    0.9489774107933044     │
-└───────────────────────────┴───────────────────────────┘
-/cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
-  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
-INFO:anomalib.models.components.base.anomaly_module:Initializing Padim model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing LWinNN model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing Patchcore model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing SPADE model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing SPALWinNN model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-GPU available: True (cuda), used: True
-TPU available: False, using: 0 TPU cores
-HPU available: False, using: 0 HPUs
-`Trainer(val_check_interval=1.0)` was configured so validation will run at the end of the training epoch..
-You are using a CUDA device ('NVIDIA RTX A5000') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-/cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/lightning/pytorch/core/optimizer.py:182: `LightningModule.configure_optimizers` returned `None`, this fit will run with no optimizer
-
-  | Name                  | Type                     | Params | Mode 
----------------------------------------------------------------------------
-0 | model                 | SPALWinNNModel           | 2.8 M  | train
-1 | _transform            | Compose                  | 0      | train
-2 | normalization_metrics | MetricCollection         | 0      | train
-3 | image_threshold       | F1AdaptiveThreshold      | 0      | train
-4 | pixel_threshold       | F1AdaptiveThreshold      | 0      | train
-5 | image_metrics         | AnomalibMetricCollection | 0      | train
-6 | pixel_metrics         | AnomalibMetricCollection | 0      | train
----------------------------------------------------------------------------
-2.8 M     Trainable params
-0         Non-trainable params
-2.8 M     Total params
-11.131    Total estimated model params size (MB)
-15        Modules in train mode
-69        Modules in eval mode
-Training: |          | 0/? [00:00<?, ?it/s]Training:   0%|          | 0/1 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/1 [00:00<?, ?it/s] /cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/lightning/pytorch/loops/optimization/automatic.py:132: `training_step` returned `None`. If this was on purpose, ignore this warning...
-Epoch 0: 100%|██████████| 1/1 [00:11<00:00,  0.08it/s]Epoch 0: 100%|██████████| 1/1 [00:11<00:00,  0.08it/s]
-Validation: |          | 0/? [00:00<?, ?it/s][AINFO:src.anomalib.models.image.spalwinnn.lightning_model:Aggregating the embedding extracted from the training set.
-INFO:src.anomalib.models.image.spalwinnn.lightning_model:Generating memory bank
-
-Validation:   0%|          | 0/1 [00:00<?, ?it/s][A
-Validation DataLoader 0:   0%|          | 0/1 [00:00<?, ?it/s][A
-Validation DataLoader 0: 100%|██████████| 1/1 [00:01<00:00,  0.81it/s][A
-                                                                      [AEpoch 0: 100%|██████████| 1/1 [01:24<00:00,  0.01it/s, pixel_AUPRO=0.874]Epoch 0: 100%|██████████| 1/1 [01:24<00:00,  0.01it/s, pixel_AUPRO=0.874]`Trainer.fit` stopped: `max_epochs=1` reached.
-Epoch 0: 100%|██████████| 1/1 [02:16<00:00,  0.01it/s, pixel_AUPRO=0.874]INFO:anomalib.callbacks.timer:Training took 137.40 seconds
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-
-Testing: |          | 0/? [00:00<?, ?it/s]Testing:   0%|          | 0/1 [00:00<?, ?it/s]Testing DataLoader 0:   0%|          | 0/1 [00:00<?, ?it/s]Testing DataLoader 0: 100%|██████████| 1/1 [00:23<00:00,  0.04it/s]INFO:anomalib.callbacks.timer:Testing took 127.5867509841919 seconds
-Throughput (batch_size=350) : 0.6191865486862986 FPS
-Testing DataLoader 0: 100%|██████████| 1/1 [02:03<00:00,  0.01it/s]
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃        Test metric        ┃       DataLoader 0        ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
-│        image_AUROC        │    0.9850876927375793     │
-│        pixel_AUPRO        │    0.8774704337120056     │
-└───────────────────────────┴───────────────────────────┘
-/cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
-  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
-INFO:anomalib.models.components.base.anomaly_module:Initializing Padim model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing LWinNN model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing Patchcore model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing SPADE model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:anomalib.models.components.base.anomaly_module:Initializing SPALWinNN model.
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-GPU available: True (cuda), used: True
-TPU available: False, using: 0 TPU cores
-HPU available: False, using: 0 HPUs
-`Trainer(val_check_interval=1.0)` was configured so validation will run at the end of the training epoch..
-You are using a CUDA device ('NVIDIA RTX A5000') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
-INFO:src.anomalib.data.image.mvtec:Found the dataset.
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-/cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/lightning/pytorch/core/optimizer.py:182: `LightningModule.configure_optimizers` returned `None`, this fit will run with no optimizer
-
-  | Name                  | Type                     | Params | Mode 
----------------------------------------------------------------------------
-0 | model                 | SPALWinNNModel           | 2.8 M  | train
-1 | _transform            | Compose                  | 0      | train
-2 | normalization_metrics | MetricCollection         | 0      | train
-3 | image_threshold       | F1AdaptiveThreshold      | 0      | train
-4 | pixel_threshold       | F1AdaptiveThreshold      | 0      | train
-5 | image_metrics         | AnomalibMetricCollection | 0      | train
-6 | pixel_metrics         | AnomalibMetricCollection | 0      | train
----------------------------------------------------------------------------
-2.8 M     Trainable params
-0         Non-trainable params
-2.8 M     Total params
-11.131    Total estimated model params size (MB)
-15        Modules in train mode
-69        Modules in eval mode
-Training: |          | 0/? [00:00<?, ?it/s]Training:   0%|          | 0/1 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/1 [00:00<?, ?it/s] /cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/lightning/pytorch/loops/optimization/automatic.py:132: `training_step` returned `None`. If this was on purpose, ignore this warning...
-Epoch 0: 100%|██████████| 1/1 [00:06<00:00,  0.15it/s]Epoch 0: 100%|██████████| 1/1 [00:06<00:00,  0.15it/s]
-Validation: |          | 0/? [00:00<?, ?it/s][AINFO:src.anomalib.models.image.spalwinnn.lightning_model:Aggregating the embedding extracted from the training set.
-INFO:src.anomalib.models.image.spalwinnn.lightning_model:Generating memory bank
-
-Validation:   0%|          | 0/1 [00:00<?, ?it/s][A
-Validation DataLoader 0:   0%|          | 0/1 [00:00<?, ?it/s][A
-Validation DataLoader 0: 100%|██████████| 1/1 [00:01<00:00,  0.51it/s][A
-                                                                      [AEpoch 0: 100%|██████████| 1/1 [03:11<00:00,  0.01it/s, pixel_AUPRO=0.935]Epoch 0: 100%|██████████| 1/1 [03:11<00:00,  0.01it/s, pixel_AUPRO=0.935]/cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
-  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
-INFO:anomalib.models.components.base.anomaly_module:Initializing Padim model.
---- Logging error ---
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
---- Logging error ---
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
---- Logging error ---
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
---- Logging error ---
-INFO:anomalib.models.components.base.anomaly_module:Initializing LWinNN model.
---- Logging error ---
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
---- Logging error ---
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
---- Logging error ---
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
---- Logging error ---
-INFO:anomalib.models.components.base.anomaly_module:Initializing Patchcore model.
---- Logging error ---
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
---- Logging error ---
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
---- Logging error ---
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
---- Logging error ---
-INFO:anomalib.models.components.base.anomaly_module:Initializing SPADE model.
---- Logging error ---
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-/cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
-  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
-INFO:anomalib.models.components.base.anomaly_module:Initializing Padim model.
---- Logging error ---
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
---- Logging error ---
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
---- Logging error ---
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
---- Logging error ---
-INFO:anomalib.models.components.base.anomaly_module:Initializing LWinNN model.
---- Logging error ---
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
---- Logging error ---
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
---- Logging error ---
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
---- Logging error ---
-INFO:anomalib.models.components.base.anomaly_module:Initializing Patchcore model.
---- Logging error ---
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
---- Logging error ---
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
---- Logging error ---
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
---- Logging error ---
-INFO:anomalib.models.components.base.anomaly_module:Initializing SPADE model.
---- Logging error ---
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
---- Logging error ---
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
---- Logging error ---
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
---- Logging error ---
-INFO:anomalib.models.components.base.anomaly_module:Initializing SPALWinNN model.
---- Logging error ---
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-/cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
-  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
-INFO:anomalib.models.components.base.anomaly_module:Initializing Padim model.
---- Logging error ---
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
---- Logging error ---
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
---- Logging error ---
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
---- Logging error ---
-INFO:anomalib.models.components.base.anomaly_module:Initializing LWinNN model.
---- Logging error ---
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
-/cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
-  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
-/cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
-  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
-INFO:anomalib.models.components.base.anomaly_module:Initializing Padim model.
---- Logging error ---
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
---- Logging error ---
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
---- Logging error ---
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
---- Logging error ---
-INFO:anomalib.models.components.base.anomaly_module:Initializing LWinNN model.
---- Logging error ---
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
---- Logging error ---
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
---- Logging error ---
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
---- Logging error ---
-INFO:anomalib.models.components.base.anomaly_module:Initializing Patchcore model.
---- Logging error ---
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
---- Logging error ---
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-/cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
-  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
-/cw/dtaijupiter/NoCsBack/dtai/mariette/miniconda3/envs/new_env/lib/python3.10/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
-  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
-INFO:anomalib.models.components.base.anomaly_module:Initializing Padim model.
---- Logging error ---
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
---- Logging error ---
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
---- Logging error ---
-INFO:timm.models._builder:Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
---- Logging error ---
-INFO:anomalib.models.components.base.anomaly_module:Initializing LWinNN model.
---- Logging error ---
-INFO:timm.models._builder:Loading pretrained weights from Hugging Face hub (timm/resnet18.a1_in1k)
---- Logging error ---
-INFO:timm.models._hub:[timm/resnet18.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.

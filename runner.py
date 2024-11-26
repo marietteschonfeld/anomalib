@@ -82,7 +82,7 @@ def main():
     args = parse_arguments()
     roots = {"mvtec_ad":"../AdversariApple/Data/mvtec_anomaly_detection/",
              "visa": "../AdversariApple/Data/VisA_20220922"}
-    
+    print("Running dataset {} {} with model {}".format(args.dataset, args.category, args.model))
     image_size = image_sizes[args.dataset][args.category]
     H = ceil((256/max(image_size))*min(image_size))
     transform = transforms.Compose([
@@ -92,15 +92,14 @@ def main():
 
     models = {"padim": Padim(backbone="resnet18", layers=["layer1", "layer2", "layer3"]),
               "lwinnn": LWinNN(backbone="resnet18", window_size=args.window_size, layers=["layer1", "layer2", "layer3"]),
-              "patchcore": Patchcore(backbone="resnet18", layers=["layer1", "layer2", "layer3"]),
+              "patchcore": Patchcore(backbone="resnet18", layers=["layer2", "layer3"]),
               "spade": SPADE(backbone="resnet18", layers=["layer1", "layer2", "layer3"]), 
               "spalwinnn": SPALWinNN(backbone="resnet18", layers=["layer1", "layer2", "layer3"], K_im=args.K, interpolation_mode=args.interpolation_mode,
                                      anomaly_map_detection=args.anomaly_map_detection, window_size=args.window_size, pooling=args.pooling)}
     
-    batch_sizes = {"padim": 8, "lwinnn": 8, "patchcore": 8, "spade": 8, "spalwinnn" : 350}
+    batch_sizes = {"padim": 32, "lwinnn": 32, "patchcore": 32, "spade": 32, "spalwinnn" : 32}
     
-    models[args.model]._transform = transform
-    num_workers = 15
+    num_workers = 1
     if args.dataset == "mvtec_ad":
         datamodule = MVTec(root=roots[args.dataset], num_workers=num_workers,category=args.category, train_batch_size=batch_sizes[args.model], eval_batch_size=batch_sizes[args.model])
     elif args.dataset == "visa":
@@ -109,6 +108,8 @@ def main():
     datamodule.setup()
 
     model = models[args.model]
+    model._transform = transform
+
 
 
     # start training

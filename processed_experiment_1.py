@@ -34,9 +34,10 @@ df = pd.read_csv("experiment_1.csv")
 ablations = {'None':(False, 'nearest', 50, 1, False),
           '1':(True, 'nearest', 50, 1, False),
           '1+2':(True, 'bilinear', 50, 1, False),
-          '1+2+3':(True, 'nearest', -1, 1, False),
-          '1+2+3+4':(True, 'nearest', -1, 5, False),
-          '1+2+3+4+5':(True, 'nearest', -1, 5, True),}
+          '1+2+3':(True, 'bilinear', 50, 1, True),
+          '1+2+3+4':(True, 'bilinear', -1, 1, True),
+          '1+2+3+4+5':(True, 'bilinear', -1, 5, True),
+}
 
 rows = []
 df['category_type'] = "2"
@@ -47,7 +48,7 @@ for dataset, dataset_categories in datasets.items():
 
         row = {'dataset':dataset, 'category_type':category_type}
         for ablation, spec in ablations.items():
-            temp = category_type_df.query('pooling=={} and `interpolation_mode`=="{}" and K=={} and window_size=={} and anomaly_map_detection'.format(spec[0], spec[1], spec[2], spec[3], spec[4]), engine="python")
+            temp = category_type_df.query('pooling=={} and `interpolation_mode`=="{}" and K=={} and window_size=={} and anomaly_map_detection=={}'.format(spec[0], spec[1], spec[2], spec[3], spec[4]), engine="python")
             if len(temp)>0:
                 row[ablation+"_im"] = temp['image_AUROC'].mean()
                 row[ablation+"_pix"]= temp['pixel_AUPRO'].mean()
@@ -62,7 +63,7 @@ for dataset, dataset_categories in datasets.items():
 
             row = {'dataset':dataset, 'category_type':category}
             for ablation, spec in ablations.items():
-                temp = category_type_df.query('pooling=={} and `interpolation_mode`=="{}" and K=={} and window_size=={} and anomaly_map_detection'.format(spec[0], spec[1], spec[2], spec[3], spec[4]), engine="python")
+                temp = category_type_df.query('pooling=={} and `interpolation_mode`=="{}" and K=={} and window_size=={} and anomaly_map_detection=={}'.format(spec[0], spec[1], spec[2], spec[3], spec[4]), engine="python")
                 if len(temp)>0:
                     row[ablation+"_im"] = temp['image_AUROC'].mean()
                     row[ablation+"_pix"]= temp['pixel_AUPRO'].mean()
