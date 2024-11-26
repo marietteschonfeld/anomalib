@@ -107,6 +107,7 @@ class SPALWinNNModel(nn.Module):
 
             if self.anomaly_map_detection or self.K_im<0:
                 anomaly_scores = self.compute_anomaly_scores(patch_scores)
+            
 
             anomaly_map = self.anomaly_map_generator(patch_scores, output_size)
             output = {"pred_score": anomaly_scores, 
