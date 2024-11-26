@@ -47,5 +47,4 @@ for category in "${visa_categories[@]}"; do
     python runner.py --model "$model" --dataset visa --category "$category" --gpu_type "$gpu_type" --gpu_number "$gpu_number" --write_scores "$write_scores" --interpolation_mode "bilinear" --pooling True --K 50 --window_size 1 --anomaly_map_detection True
     python runner.py --model "$model" --dataset visa --category "$category" --gpu_type "$gpu_type" --gpu_number "$gpu_number" --write_scores "$write_scores" --interpolation_mode "bilinear" --pooling True --K -1 --window_size 1 --anomaly_map_detection True
     python runner.py --model "$model" --dataset visa --category "$category" --gpu_type "$gpu_type" --gpu_number "$gpu_number" --write_scores "$write_scores" --interpolation_mode "bilinear" --pooling True --K -1 --window_size 5 --anomaly_map_detection True
-
 done
