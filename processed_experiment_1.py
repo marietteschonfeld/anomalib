@@ -26,7 +26,8 @@ header = ['dataset','category_type',
           '1+2_im','1+2_pix',
           '1+2+3_im','1+2+3_pix',
           '1+2+3+4_im','1+2+3+4_pix',
-          '1+2+3+4+5_im','1+2+3+4+5_pix'
+          '1+2+3+4+5_im','1+2+3+4+5_pix',
+          '1+3+4+5_im','1+3+4+5_pix'
 ]
 
 df = pd.read_csv("experiment_1.csv")
@@ -37,6 +38,7 @@ ablations = {'None':(False, 'nearest', 50, 1, False),
           '1+2+3':(True, 'bilinear', 50, 1, True),
           '1+2+3+4':(True, 'bilinear', -1, 1, True),
           '1+2+3+4+5':(True, 'bilinear', -1, 5, True),
+          '1+3+4+5':(True, 'nearest', -1, 5, True),
 }
 
 rows = []
