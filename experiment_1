@@ -31,20 +31,22 @@ write_scores='experiment_1.csv'
 #     done
 # done
 
-# for category in "${mvtec_ad_categories[@]}"; do
-#     python runner.py --model "$model" --dataset mvtec_ad --category "$category" --gpu_type "$gpu_type" --gpu_number "$gpu_number" --write_scores "$write_scores" --interpolation_mode "nearest" --pooling False --K 50 --window_size 1 --anomaly_map_detection False
-#     python runner.py --model "$model" --dataset mvtec_ad --category "$category" --gpu_type "$gpu_type" --gpu_number "$gpu_number" --write_scores "$write_scores" --interpolation_mode "nearest" --pooling True --K 50 --window_size 1 --anomaly_map_detection False
-#     python runner.py --model "$model" --dataset mvtec_ad --category "$category" --gpu_type "$gpu_type" --gpu_number "$gpu_number" --write_scores "$write_scores" --interpolation_mode "bilinear" --pooling True --K 50 --window_size 1 --anomaly_map_detection False
-#     python runner.py --model "$model" --dataset mvtec_ad --category "$category" --gpu_type "$gpu_type" --gpu_number "$gpu_number" --write_scores "$write_scores" --interpolation_mode "bilinear" --pooling True --K 50 --window_size 1 --anomaly_map_detection True
-#     python runner.py --model "$model" --dataset mvtec_ad --category "$category" --gpu_type "$gpu_type" --gpu_number "$gpu_number" --write_scores "$write_scores" --interpolation_mode "bilinear" --pooling True --K -1 --window_size 1 --anomaly_map_detection True
-#     python runner.py --model "$model" --dataset mvtec_ad --category "$category" --gpu_type "$gpu_type" --gpu_number "$gpu_number" --write_scores "$write_scores" --interpolation_mode "bilinear" --pooling True --K -1 --window_size 5 --anomaly_map_detection True
-# done
+for category in "${mvtec_ad_categories[@]}"; do
+    # python runner.py --model "$model" --dataset mvtec_ad --category "$category" --gpu_type "$gpu_type" --gpu_number "$gpu_number" --write_scores "$write_scores" --interpolation_mode "nearest" --pooling False --K 50 --window_size 1 --anomaly_map_detection False
+    # python runner.py --model "$model" --dataset mvtec_ad --category "$category" --gpu_type "$gpu_type" --gpu_number "$gpu_number" --write_scores "$write_scores" --interpolation_mode "nearest" --pooling True --K 50 --window_size 1 --anomaly_map_detection False
+    # python runner.py --model "$model" --dataset mvtec_ad --category "$category" --gpu_type "$gpu_type" --gpu_number "$gpu_number" --write_scores "$write_scores" --interpolation_mode "bilinear" --pooling True --K 50 --window_size 1 --anomaly_map_detection False
+    # python runner.py --model "$model" --dataset mvtec_ad --category "$category" --gpu_type "$gpu_type" --gpu_number "$gpu_number" --write_scores "$write_scores" --interpolation_mode "bilinear" --pooling True --K 50 --window_size 1 --anomaly_map_detection True
+    # python runner.py --model "$model" --dataset mvtec_ad --category "$category" --gpu_type "$gpu_type" --gpu_number "$gpu_number" --write_scores "$write_scores" --interpolation_mode "bilinear" --pooling True --K -1 --window_size 1 --anomaly_map_detection True
+    # python runner.py --model "$model" --dataset mvtec_ad --category "$category" --gpu_type "$gpu_type" --gpu_number "$gpu_number" --write_scores "$write_scores" --interpolation_mode "bilinear" --pooling True --K -1 --window_size 5 --anomaly_map_detection True
+    python runner.py --model "$model" --dataset mvtec_ad --category "$category" --gpu_type "$gpu_type" --gpu_number "$gpu_number" --write_scores "$write_scores" --interpolation_mode "nearest" --pooling True --K -1 --window_size 5 --anomaly_map_detection True
+done
 
 for category in "${visa_categories[@]}"; do
-    python runner.py --model "$model" --dataset visa --category "$category" --gpu_type "$gpu_type" --gpu_number "$gpu_number" --write_scores "$write_scores" --interpolation_mode "nearest" --pooling False --K 50 --window_size 1 --anomaly_map_detection False
-    python runner.py --model "$model" --dataset visa --category "$category" --gpu_type "$gpu_type" --gpu_number "$gpu_number" --write_scores "$write_scores" --interpolation_mode "nearest" --pooling True --K 50 --window_size 1 --anomaly_map_detection False
-    python runner.py --model "$model" --dataset visa --category "$category" --gpu_type "$gpu_type" --gpu_number "$gpu_number" --write_scores "$write_scores" --interpolation_mode "bilinear" --pooling True --K 50 --window_size 1 --anomaly_map_detection False
-    python runner.py --model "$model" --dataset visa --category "$category" --gpu_type "$gpu_type" --gpu_number "$gpu_number" --write_scores "$write_scores" --interpolation_mode "bilinear" --pooling True --K 50 --window_size 1 --anomaly_map_detection True
-    python runner.py --model "$model" --dataset visa --category "$category" --gpu_type "$gpu_type" --gpu_number "$gpu_number" --write_scores "$write_scores" --interpolation_mode "bilinear" --pooling True --K -1 --window_size 1 --anomaly_map_detection True
-    python runner.py --model "$model" --dataset visa --category "$category" --gpu_type "$gpu_type" --gpu_number "$gpu_number" --write_scores "$write_scores" --interpolation_mode "bilinear" --pooling True --K -1 --window_size 5 --anomaly_map_detection True
+    # python runner.py --model "$model" --dataset visa --category "$category" --gpu_type "$gpu_type" --gpu_number "$gpu_number" --write_scores "$write_scores" --interpolation_mode "nearest" --pooling False --K 50 --window_size 1 --anomaly_map_detection False
+    # python runner.py --model "$model" --dataset visa --category "$category" --gpu_type "$gpu_type" --gpu_number "$gpu_number" --write_scores "$write_scores" --interpolation_mode "nearest" --pooling True --K 50 --window_size 1 --anomaly_map_detection False
+    # python runner.py --model "$model" --dataset visa --category "$category" --gpu_type "$gpu_type" --gpu_number "$gpu_number" --write_scores "$write_scores" --interpolation_mode "bilinear" --pooling True --K 50 --window_size 1 --anomaly_map_detection False
+    # python runner.py --model "$model" --dataset visa --category "$category" --gpu_type "$gpu_type" --gpu_number "$gpu_number" --write_scores "$write_scores" --interpolation_mode "bilinear" --pooling True --K 50 --window_size 1 --anomaly_map_detection True
+    # python runner.py --model "$model" --dataset visa --category "$category" --gpu_type "$gpu_type" --gpu_number "$gpu_number" --write_scores "$write_scores" --interpolation_mode "bilinear" --pooling True --K -1 --window_size 1 --anomaly_map_detection True
+    # python runner.py --model "$model" --dataset visa --category "$category" --gpu_type "$gpu_type" --gpu_number "$gpu_number" --write_scores "$write_scores" --interpolation_mode "bilinear" --pooling True --K -1 --window_size 5 --anomaly_map_detection True
+    python runner.py --model "$model" --dataset visa --category "$category" --gpu_type "$gpu_type" --gpu_number "$gpu_number" --write_scores "$write_scores" --interpolation_mode "nearest" --pooling True --K -1 --window_size 5 --anomaly_map_detection True
 done

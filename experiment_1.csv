@@ -89,12 +89,6 @@ mvtec_ad,toothbrush,spalwinnn,bilinear,True,50,1,True,0.9583333134651184,0.91619
 mvtec_ad,transistor,spalwinnn,bilinear,True,50,1,True,0.9854166507720948,0.9489774107933044
 mvtec_ad,wood,spalwinnn,bilinear,True,50,1,True,0.9850876927375792,0.8774704337120056
 mvtec_ad,zipper,spalwinnn,bilinear,True,50,1,True,0.9283087849617004,0.9351699948310852
-visa,candle,spalwinnn,bilinear,True,-1,1,True,0.9422999620437622,0.9503201246261597
-visa,candle,spalwinnn,bilinear,True,-1,5,True,0.9560999870300293,0.9542135000228882
-visa,candle,spalwinnn,bilinear,True,-1,1,True,0.9422999620437622,0.9503204226493835
-visa,candle,spalwinnn,bilinear,True,-1,5,True,0.9560999870300293,0.9542146921157837
-visa,capsules,spalwinnn,bilinear,True,-1,1,True,0.6626666784286499,0.6565414071083069
-visa,capsules,spalwinnn,bilinear,True,-1,5,True,0.687333345413208,0.7302900552749634
 visa,candle,spalwinnn,nearest,False,50,1,False,0.8519001007080078,0.943231463432312
 visa,candle,spalwinnn,nearest,True,50,1,False,0.882099986076355,0.9468481540679932
 visa,candle,spalwinnn,bilinear,True,50,1,False,0.8737000226974487,0.9417703151702881
