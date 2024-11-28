@@ -1,0 +1,18 @@
+#!/bin/bash
+mvtec_ad_categories=('bottle' 'cable' 'capsule' 'carpet' 'grid' 'hazelnut' 'leather' 'metal_nut' 'pill' 'screw' 'tile' 'toothbrush' 'transistor' 'wood' 'zipper')
+visa_categories=('candle' 'capsules' 'cashew' 'chewinggum' 'fryum' 'macaroni1' 'macaroni2' 'pcb1' 'pcb2' 'pcb3' 'pcb4' 'pipe_fryum')
+
+models=('padim' 'lwinnn' 'spade' 'patchcore')
+
+gpu_type='cuda'
+gpu_number='1'
+write_scores='experiment_4.csv'
+for model in "${models[@]}"; do
+    for category in "${mvtec_ad_categories[@]}"; do
+        python runner.py --evaluation_type latency --model "$model" --dataset mvtec_ad --category "$category" --gpu_type "$gpu_type" --gpu_number "$gpu_number" --write_scores "$write_scores" 
+    done
+
+    for category in "${visa_categories[@]}"; do
+        python runner.py --evaluation_type latency --model "$model" --dataset visa --category "$category" --gpu_type "$gpu_type" --gpu_number "$gpu_number" --write_scores "$write_scores"
+    done
+done

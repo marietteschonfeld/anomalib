@@ -14,6 +14,7 @@ import torch
 import yaml
 from pathlib import Path
 import shutil
+import time
 
 DATASETS = ['mvtec_ad', 'visa', 'mvtec_loco']
 CATEGORIES = ['bottle','cable','capsule','carpet','grid','hazelnut','leather','metal_nut','pill','screw','tile','toothbrush','transistor','wood','zipper',
@@ -68,6 +69,7 @@ def parse_arguments():
     parser.add_argument("--gpu_type", default="mps")
     parser.add_argument("--gpu_number", default=0)
     parser.add_argument("--write_scores", type=str, default="")
+    parser.add_argument("--evaluation_type", type=str, default="inferencing")
 
     parser.add_argument("--interpolation_mode", type=str, default="bilinear")
     parser.add_argument("--K", type=int, default=-1)
@@ -106,7 +108,7 @@ def main():
               "spalwinnn": SPALWinNN(backbone="resnet18", layers=["layer1", "layer2", "layer3"], K_im=args.K, interpolation_mode=args.interpolation_mode,
                                      anomaly_map_detection=args.anomaly_map_detection, window_size=args.window_size, pooling=args.pooling)}
     
-    batch_sizes = {"padim": 17, "lwinnn": 8, "patchcore": 17, "spade": 8, "spalwinnn" : 17}
+    batch_sizes = {"padim": 31, "lwinnn": 31, "patchcore": 31, "spade": 31, "spalwinnn" : 31}
     
     num_workers = {'mps': 1, 'cuda':1}[args.gpu_type]
     if args.dataset == "mvtec_ad":
@@ -133,29 +135,52 @@ def main():
 
 
     # start training
-    engine = Engine(accelerator=args.gpu_type,task=TaskType.SEGMENTATION, image_metrics=["AUROC"], pixel_metrics=["AUPRO"])#, normalization=NormalizationMethod.NONE)
-    engine.fit(model=model, datamodule=datamodule)
+    if args.evaluation_type == "inferencing":
+        engine = Engine(accelerator=args.gpu_type,task=TaskType.SEGMENTATION, image_metrics=["AUROC"], pixel_metrics=["AUPRO"])#, normalization=NormalizationMethod.NONE)
+        engine.fit(model=model, datamodule=datamodule)
 
-    # load best model from checkpoint before evaluating
-    test_results = engine.test(
-        model=model,
-        datamodule=datamodule
-    )
+        # load best model from checkpoint before evaluating
+        test_results = engine.test(
+            model=model,
+            datamodule=datamodule
+        )
 
-    image_AUROC = test_results[0]['image_AUROC']
-    pixel_AUPRO = test_results[0]['pixel_AUPRO']
+        image_AUROC = test_results[0]['image_AUROC']
+        pixel_AUPRO = test_results[0]['pixel_AUPRO']
 
-    if args.write_scores != "":
-        if args.model == "spalwinnn":
-            row = [args.dataset,args.category,args.model,args.interpolation_mode, args.pooling, args.K, args.window_size, args.anomaly_map_detection, image_AUROC,pixel_AUPRO]
+        if args.write_scores != "":
+            if args.model == "spalwinnn":
+                row = [args.dataset,args.category,args.model,args.interpolation_mode, args.pooling, args.K, args.window_size, args.anomaly_map_detection, image_AUROC,pixel_AUPRO]
+            else:
+                row = [args.dataset,args.category,args.model,image_AUROC,pixel_AUPRO]
+            with open('{}'.format(args.write_scores),'a') as fd:
+                writer = csv.writer(fd)
+                writer.writerow(row)
         else:
-            row = [args.dataset,args.category,args.model,image_AUROC,pixel_AUPRO]
-        with open('{}'.format(args.write_scores),'a') as fd:
-            writer = csv.writer(fd)
-            writer.writerow(row)
-    else:
-        print("Printing scores for {} of {} dataset with model {}...".format(args.category, args.dataset, args.model))
-        print("Image AUROC: {}, Pixel AUPRO: {}".format(image_AUROC, pixel_AUPRO))
+            print("Printing scores for {} of {} dataset with model {}...".format(args.category, args.dataset, args.model))
+            print("Image AUROC: {}, Pixel AUPRO: {}".format(image_AUROC, pixel_AUPRO))
+    
+    elif args.evaluation_type == "latency":
+        engine = Engine(accelerator=args.gpu_type,task=TaskType.DETECTION, image_metrics=['AUROC'])#, normalization=NormalizationMethod.NONE)
+        engine.fit(model=model, datamodule=datamodule)
+
+        # run 20 times for evaluating latency
+        for i in range(0, 20):
+            time_start = time.time()
+            test_results = engine.test(
+                model=model,
+                datamodule=datamodule
+            )
+            time_end = time.time()
+            latency = (time_end-time_start)/len(datamodule.test_data)
+            if args.write_scores != "":
+                row = [args.dataset,args.category,args.model,i,latency]
+                with open('{}'.format(args.write_scores),'a') as fd:
+                    writer = csv.writer(fd)
+                    writer.writerow(row)
+            else:
+                print("run", i, latency, "seconds per frame")
+
 
 if __name__ == '__main__':
     main()

@@ -123,15 +123,13 @@ class SPADEModel(nn.Module):
         batch_size, embedding_size, H, W = embedding.shape
         embedding = embedding.permute(0,2,3,1).reshape(batch_size, H*W, embedding_size)
         dists = []
+
         for i in range(batch_size):
             temp_embedding = embedding[i].unsqueeze(1)
             temp_bank = self.memory_bank[top_K_images[i]].transpose(0,1)
             dist = self.nearest_neighbors(temp_embedding, temp_bank).reshape(1,H,W)
             dists.append(dist)
         patch_scores = torch.stack(dists)
-        # def nn(batch_embedding, batch_index):
-        #     return torch.cdist(batch_embedding, self.memory_bank[batch_index].transpose(0,1)).min(dim=-1)[0].reshape(1,H,W)
-        # patch_scores = torch.vmap(nn)(embedding, top_K_images)
         return patch_scores
     
     def compute_anomaly_scores(self, embedding: torch.Tensor) -> torch.Tensor:
