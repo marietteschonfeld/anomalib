@@ -171,6 +171,7 @@ def main():
                 model=model,
                 datamodule=datamodule
             )
+
             time_end = time.time()
             latency = (time_end-time_start)/len(datamodule.test_data)
             if args.write_scores != "":
