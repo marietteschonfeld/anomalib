@@ -10,7 +10,7 @@ K=-1
 window_sizes=(3 7 9 11 13 15)
 detection='True'
 
-gpu_type='mps'
+gpu_type='cuda'
 gpu_number='0'
 write_scores='experiment_3.csv'
 
