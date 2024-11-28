@@ -1,3 +1,6 @@
 dataset,category,model,run,latency
 mvtec_ad,bottle,padim,0,0.19720025234911814
 mvtec_ad,bottle,padim,1,0.18360775924590697
+mvtec_ad,bottle,padim,0,0.15851775134902402
+mvtec_ad,bottle,padim,1,0.15435636474425535
+mvtec_ad,bottle,padim,2,0.15924254382949277
