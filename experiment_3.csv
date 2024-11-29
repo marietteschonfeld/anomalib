@@ -1,3 +1,4 @@
+dataset,category,model,interpolation,pooling,K,window_size,detection,image_AUROC,pixel_AUPRO
 visa,candle,spalwinnn,bilinear,False,-1,3,True,0.8289999961853027,0.951507031917572
 visa,capsules,spalwinnn,bilinear,False,-1,3,True,0.6704167127609253,0.7838695645332336
 visa,cashew,spalwinnn,bilinear,False,-1,3,True,0.8989999890327454,0.8337320685386658
